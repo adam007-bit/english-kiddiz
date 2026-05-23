@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinguaDuo | English & Melayu · 60 Kosa Kata · Perbualan Auto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>LinguaPlay | Kids English Learning + Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,287 +13,282 @@
             box-sizing: border-box;
         }
         body {
-            background: #f0f4f9;
-            font-family: 'Inter', system-ui, sans-serif;
-            padding: 1.2rem;
-            color: #1a2c3e;
+            background: linear-gradient(145deg, #f9eec1 0%, #f4cda6 100%);
+            font-family: 'Quicksand', 'Comic Neue', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
         }
         .app-container {
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 240, 0.95);
+            border-radius: 3rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
             overflow: hidden;
+            backdrop-filter: blur(2px);
         }
         .hero {
-            background: linear-gradient(135deg, #0f2b3d 0%, #1e4a3a 100%);
-            padding: 2rem 2rem 1.5rem;
-            color: white;
+            background: linear-gradient(135deg, #ff9a3c, #d45e1e);
+            padding: 1.5rem;
             text-align: center;
+            color: white;
         }
-        .hero h1 {
-            font-size: 2.2rem;
+        .logo-area {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .lang-badges {
-            display: flex;
-            justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
             flex-wrap: wrap;
         }
-        .lang-badge {
-            background: rgba(255,255,245,0.2);
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .logo-svg {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 0.5rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .voice-status {
-            background: #2e7d5e;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
+            background: #f0a34b;
+            margin-top: 0.8rem;
+            padding: 0.3rem 1rem;
             border-radius: 2rem;
             font-size: 0.8rem;
             display: inline-block;
-            font-weight: 500;
+            font-weight: bold;
         }
         .stats-bar {
-            background: #fef9e6;
-            padding: 0.6rem;
+            background: #fff0d6;
             text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 0.6rem;
+            font-weight: bold;
             color: #b45f2b;
-            border-bottom: 1px solid #ffe0aa;
+            border-bottom: 2px solid #ffd966;
         }
         .tab-container {
             display: flex;
-            background: #f8fafc;
-            border-bottom: 2px solid #e2e8f0;
+            background: #ffe7c4;
+            gap: 0;
             flex-wrap: wrap;
         }
         .tab {
             flex: 1;
             text-align: center;
-            padding: 1rem;
-            font-weight: 700;
+            padding: 0.8rem;
+            font-weight: 800;
             cursor: pointer;
-            background: #f8fafc;
+            background: #fff0e0;
             border: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: 0.2s;
-            color: #475569;
+            color: #6b3a1a;
+            border-radius: 2rem 2rem 0 0;
         }
         .tab.active {
             background: white;
-            color: #1e6f3f;
-            border-bottom: 3px solid #1e6f3f;
+            color: #d45e1e;
+            border-bottom: 3px solid #ff9a3c;
         }
         .tab-content {
             display: none;
             padding: 2rem;
-            animation: fadeIn 0.25s ease;
+            animation: fadeIn 0.3s ease;
         }
         .tab-content.active {
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px);}
+            from { opacity: 0; transform: translateY(8px);}
             to { opacity: 1; transform: translateY(0);}
         }
+        /* Vocabulary Grid */
         .vocab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.2rem;
         }
         .card {
             background: white;
-            border-radius: 1.5rem;
-            border: 1px solid #eef2f8;
-            padding: 1.2rem;
+            border-radius: 2rem;
+            padding: 1rem;
             text-align: center;
-            transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1);
-            border-color: #d4e0ea;
-        }
+        .card:hover { transform: scale(1.02); }
         .emoji-box {
-            background: #faf5eb;
-            width: 85px;
-            height: 85px;
-            margin: 0 auto 0.7rem;
+            background: #fff1e0;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 1.5rem;
-            font-size: 3.2rem;
+            border-radius: 2rem;
+            font-size: 3rem;
         }
         .eng-word {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            background: #eef2fc;
-            display: inline-block;
-            padding: 0.1rem 1rem;
-            border-radius: 40px;
-            color: #1e5a7a;
-        }
-        .syllable {
-            font-size: 0.8rem;
-            background: #e9edf2;
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            border-radius: 40px;
-            margin: 6px 0;
-        }
-        .ms-word {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: #e0f2e9;
+            background: #ffefd0;
             display: inline-block;
             padding: 0.2rem 1rem;
-            border-radius: 40px;
-            color: #1f6e43;
-            margin-top: 5px;
+            border-radius: 3rem;
+            margin: 0.5rem 0;
+            color: #b45f2b;
         }
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
+        .syllable {
+            background: #e9f0e6;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            display: inline-block;
         }
         .audio-btn {
             border: none;
-            padding: 8px 14px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 2rem;
+            font-weight: bold;
+            background: #ffc857;
+            margin: 5px;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.08s linear;
         }
-        .audio-btn:active { transform: scale(0.95); }
-        .btn-en { background: #d9eaff; color: #0057a3; }
-        .btn-ms { background: #d1f0e3; color: #1f6e43; }
-        .btn-syll { background: #fff0d6; color: #b45f1b; width: calc(100% - 20px); justify-content: center; margin-top: 4px; }
-        
-        /* Conversation layout: two columns for EN and MS sets */
-        .convo-double {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .convo-col {
-            background: #fefef7;
-            border-radius: 1.5rem;
-            padding: 0.5rem 0 1rem 0;
-        }
-        .convo-col h3 {
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e0cfa0;
-        }
-        .convo-section {
-            margin-bottom: 1.8rem;
-            background: white;
-            border-radius: 1rem;
-            border: 1px solid #ede5d2;
-            overflow: hidden;
-            margin: 1rem;
+        /* Conversation */
+        .convo-card {
+            background: #fffaf0;
+            border-radius: 2rem;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
         }
         .convo-title {
-            background: #f7f3e8;
-            padding: 0.6rem 1rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            color: #8b5a2b;
-            border-bottom: 1px solid #ece0cd;
+            background: #ffdd99;
+            padding: 0.5rem;
+            border-radius: 2rem;
+            text-align: center;
+            margin-bottom: 0.8rem;
         }
-        .convo-dialogue {
-            padding: 0.8rem;
-        }
-        .dialogue-line {
+        .convo-line {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: baseline;
-            gap: 0.8rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #f0e5d5;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            border-bottom: 1px dashed #ffcc88;
         }
-        .dialogue-text {
-            flex: 2;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .play-auto-btn {
-            background: #4c9a6e;
+        .play-all-btn {
+            background: #4caf50;
             border: none;
-            padding: 0.3rem 0.8rem;
+            padding: 0.3rem 1rem;
             border-radius: 2rem;
             color: white;
-            font-weight: 600;
-            font-size: 0.7rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            font-weight: bold;
             margin-left: 1rem;
+            cursor: pointer;
         }
-        .mini-btn {
-            background: #f0f2f5;
-            border: none;
-            padding: 3px 8px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 600;
+        /* Games section */
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .game-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.2rem;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .game-card h3 {
+            background: #ff9a3c;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .game-question {
+            font-size: 3rem;
+            margin: 0.5rem 0;
+        }
+        .game-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        .game-option {
+            background: #f0e6d2;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.1s;
+        }
+        .game-option:hover { background: #ffd966; }
+        .game-input {
+            padding: 0.5rem;
+            border-radius: 2rem;
+            border: 2px solid #ffb347;
+            width: 80%;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .game-feedback {
+            margin: 0.8rem 0;
+            font-weight: bold;
+        }
+        .game-score {
+            background: #2e7d5e;
+            color: white;
+            border-radius: 2rem;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+        }
+        button {
             cursor: pointer;
         }
         footer {
-            background: #f8fafd;
             text-align: center;
             padding: 1rem;
-            font-size: 0.75rem;
-            color: #5c6f87;
-            border-top: 1px solid #e2edf7;
+            background: #ffe6c7;
+            font-size: 0.8rem;
         }
-        @media (max-width: 800px) {
-            .convo-double { grid-template-columns: 1fr; }
-            body { padding: 0.8rem; }
+        @media (max-width: 700px) {
             .hero h1 { font-size: 1.5rem; }
-            .tab { font-size: 0.75rem; padding: 0.8rem; }
+            .tab { font-size: 0.8rem; }
+            .games-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1><i class="fas fa-language"></i> LinguaDuo <span style="font-size:0.9rem;">✨ English & Bahasa Melayu</span></h1>
-        <div class="lang-badges">
-            <span class="lang-badge"><i class="fas fa-volume-up"></i> English (Native US)</span>
-            <span class="lang-badge"><i class="fas fa-volume-up"></i> Bahasa Melayu (Loghat Malaysia)</span>
+        <div class="logo-area">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
+                <rect width="100" height="100" rx="20" fill="#FFF2DF" />
+                <circle cx="50" cy="50" r="30" fill="#FF9A3C" />
+                <text x="50" y="65" text-anchor="middle" font-size="28" fill="white" font-weight="bold">EN</text>
+            </svg>
+            <h1><i class="fas fa-child"></i> LinguaPlay</h1>
         </div>
-        <div class="voice-status" id="voiceStatus">🔄 Memuatkan suara terbaik...</div>
+        <div class="voice-status" id="voiceStatus">🎧 Loading best English voice...</div>
     </div>
     <div class="stats-bar">
-        <i class="fas fa-globe-asia"></i> 60 perkataan unik + suku kata | Perbualan berasingan English & Melayu (auto main)
+        🌟 Learn English with fun! Vocabulary + Conversations + Games 🌟
     </div>
-
     <div class="tab-container">
-        <button class="tab active" data-tab="vocab">📖 KOSA KATA (60)</button>
-        <button class="tab" data-tab="convo">💬 PERBUALAN (EN & MS)</button>
+        <button class="tab active" data-tab="vocab">📚 Words (60)</button>
+        <button class="tab" data-tab="convo">💬 Talk Time</button>
+        <button class="tab" data-tab="games">🎮 Play & Learn</button>
     </div>
 
     <div id="vocab" class="tab-content active">
@@ -301,196 +296,163 @@
     </div>
 
     <div id="convo" class="tab-content">
-        <div class="convo-double">
-            <!-- English Conversations Column -->
-            <div class="convo-col">
-                <h3><i class="fas fa-comment-dots"></i> English Conversations</h3>
-                <div id="engConvoContainer"></div>
+        <div id="convoContainer"></div>
+    </div>
+
+    <div id="games" class="tab-content">
+        <div class="games-container">
+            <!-- Game 1: Match the Picture -->
+            <div class="game-card" id="matchGame">
+                <h3><i class="fas fa-puzzle-piece"></i> Match the Picture</h3>
+                <div class="game-question" id="matchEmoji">🐶</div>
+                <div class="game-options" id="matchOptions"></div>
+                <div class="game-feedback" id="matchFeedback"></div>
+                <div class="game-score" id="matchScore">Score: 0</div>
+                <button id="nextMatchBtn" style="margin-top: 10px; background:#ffb347; border:none; border-radius:2rem; padding:5px 15px;">Next Word →</button>
             </div>
-            <!-- Malay Conversations Column -->
-            <div class="convo-col">
-                <h3><i class="fas fa-comment-dots"></i> Perbualan Bahasa Melayu</h3>
-                <div id="msConvoContainer"></div>
+            <!-- Game 2: Spelling Challenge -->
+            <div class="game-card" id="spellingGame">
+                <h3><i class="fas fa-pencil-alt"></i> Spelling Challenge</h3>
+                <div class="game-question" id="spellEmoji">🐱</div>
+                <input type="text" id="spellInput" class="game-input" placeholder="Type the word...">
+                <button id="checkSpellBtn" style="background:#4caf50; margin-top:10px;">Check</button>
+                <div class="game-feedback" id="spellFeedback"></div>
+                <div class="game-score" id="spellScore">Score: 0</div>
+                <button id="nextSpellBtn" style="margin-top:5px; background:#ffb347;">New Word</button>
+            </div>
+            <!-- Game 3: Listening Quiz -->
+            <div class="game-card" id="listenGame">
+                <h3><i class="fas fa-headphones"></i> Listening Quiz</h3>
+                <div class="game-question"><i class="fas fa-volume-up" style="font-size:2rem;"></i> What word do you hear?</div>
+                <button id="playListenBtn" style="background:#6c5ce7; color:white; padding:6px 15px; border-radius:2rem; margin:10px;">🔊 Play Sound</button>
+                <div class="game-options" id="listenOptions"></div>
+                <div class="game-feedback" id="listenFeedback"></div>
+                <div class="game-score" id="listenScore">Score: 0</div>
+                <button id="nextListenBtn" style="margin-top:8px;">Next Question</button>
             </div>
         </div>
     </div>
-    <footer><i class="fas fa-headset"></i> Tekan butang "Main Semua" untuk dengar seluruh perbualan dalam bahasa tersebut. Accent automatik mengikut bahasa.</footer>
+    <footer>🎈 Click any speaker button to hear the word! Games help you learn faster. Have fun!</footer>
 </div>
 
 <script>
-    // ==================== 60 UNIQUE VOCABULARY (ENGLISH + MALAY) ====================
+    // -------------------- 60 ENGLISH VOCABULARY (simplified, kid-friendly) --------------------
     const vocabulary = [
-        { emoji: "📖", en: "book", syllables: ["book"], ms: "buku" },
-        { emoji: "🍎", en: "apple", syllables: ["ap","ple"], ms: "epal" },
-        { emoji: "🐱", en: "cat", syllables: ["cat"], ms: "kucing" },
-        { emoji: "🐶", en: "dog", syllables: ["dog"], ms: "anjing" },
-        { emoji: "☀️", en: "sun", syllables: ["sun"], ms: "matahari" },
-        { emoji: "🚗", en: "car", syllables: ["car"], ms: "kereta" },
-        { emoji: "🏠", en: "house", syllables: ["house"], ms: "rumah" },
-        { emoji: "🌸", en: "flower", syllables: ["flow","er"], ms: "bunga" },
-        { emoji: "🌳", en: "tree", syllables: ["tree"], ms: "pokok" },
-        { emoji: "🐦", en: "bird", syllables: ["bird"], ms: "burung" },
-        { emoji: "🐟", en: "fish", syllables: ["fish"], ms: "ikan" },
-        { emoji: "⚽", en: "ball", syllables: ["ball"], ms: "bola" },
-        { emoji: "🌙", en: "moon", syllables: ["moon"], ms: "bulan" },
-        { emoji: "⭐", en: "star", syllables: ["star"], ms: "bintang" },
-        { emoji: "🍌", en: "banana", syllables: ["ba","na","na"], ms: "pisang" },
-        { emoji: "🐘", en: "elephant", syllables: ["el","e","phant"], ms: "gajah" },
-        { emoji: "🦁", en: "lion", syllables: ["li","on"], ms: "singa" },
-        { emoji: "🦆", en: "duck", syllables: ["duck"], ms: "itik" },
-        { emoji: "👟", en: "shoe", syllables: ["shoe"], ms: "kasut" },
-        { emoji: "🧢", en: "hat", syllables: ["hat"], ms: "topi" },
-        { emoji: "🐄", en: "cow", syllables: ["cow"], ms: "lembu" },
-        { emoji: "🐒", en: "monkey", syllables: ["mon","key"], ms: "monyet" },
-        { emoji: "🍓", en: "strawberry", syllables: ["straw","ber","ry"], ms: "strawberi" },
-        { emoji: "🚲", en: "bicycle", syllables: ["bi","cy","cle"], ms: "basikal" },
-        { emoji: "✈️", en: "airplane", syllables: ["air","plane"], ms: "kapal terbang" },
-        { emoji: "⏰", en: "clock", syllables: ["clock"], ms: "jam" },
-        { emoji: "🍕", en: "pizza", syllables: ["piz","za"], ms: "piza" },
-        { emoji: "🐸", en: "frog", syllables: ["frog"], ms: "katak" },
-        { emoji: "🐝", en: "bee", syllables: ["bee"], ms: "lebah" },
-        { emoji: "🌽", en: "corn", syllables: ["corn"], ms: "jagung" },
-        { emoji: "✏️", en: "pen", syllables: ["pen"], ms: "pen" },
-        { emoji: "🪑", en: "chair", syllables: ["chair"], ms: "kerusi" },
-        { emoji: "📊", en: "table", syllables: ["ta","ble"], ms: "meja" },
-        { emoji: "🚪", en: "door", syllables: ["door"], ms: "pintu" },
-        { emoji: "🚌", en: "bus", syllables: ["bus"], ms: "bas" },
-        { emoji: "🐔", en: "chicken", syllables: ["chick","en"], ms: "ayam" },
-        { emoji: "🍞", en: "bread", syllables: ["bread"], ms: "roti" },
-        { emoji: "🥛", en: "milk", syllables: ["milk"], ms: "susu" },
-        { emoji: "🧸", en: "teddy bear", syllables: ["ted","dy","bear"], ms: "beruang" },
-        { emoji: "🎈", en: "balloon", syllables: ["bal","loon"], ms: "belon" },
-        { emoji: "🖍️", en: "crayon", syllables: ["cray","on"], ms: "krayon" },
-        { emoji: "📏", en: "ruler", syllables: ["rul","er"], ms: "pembaris" },
-        { emoji: "🖌️", en: "paintbrush", syllables: ["paint","brush"], ms: "berus cat" },
-        { emoji: "🪁", en: "kite", syllables: ["kite"], ms: "wau" },
-        { emoji: "🍪", en: "cookie", syllables: ["cook","ie"], ms: "biskut" },
-        { emoji: "🍦", en: "ice cream", syllables: ["ice","cream"], ms: "ais krim" },
-        { emoji: "🥕", en: "carrot", syllables: ["car","rot"], ms: "lobak merah" },
-        { emoji: "🍅", en: "tomato", syllables: ["to","ma","to"], ms: "tomat" },
-        { emoji: "🧀", en: "cheese", syllables: ["cheese"], ms: "keju" },
-        { emoji: "🍔", en: "hamburger", syllables: ["ham","bur","ger"], ms: "burger" },
-        { emoji: "🥨", en: "pretzel", syllables: ["pret","zel"], ms: "pretzel" },
-        { emoji: "🥑", en: "avocado", syllables: ["a","vo","ca","do"], ms: "avokado" },
-        { emoji: "🥥", en: "coconut", syllables: ["co","co","nut"], ms: "kelapa" },
-        { emoji: "🧅", en: "onion", syllables: ["on","ion"], ms: "bawang" },
-        { emoji: "🥔", en: "potato", syllables: ["po","ta","to"], ms: "kentang" },
-        { emoji: "🦷", en: "tooth", syllables: ["tooth"], ms: "gigi" },
-        { emoji: "🫀", en: "heart", syllables: ["heart"], ms: "jantung" },
-        { emoji: "🧠", en: "brain", syllables: ["brain"], ms: "otak" },
-        { emoji: "👁️", en: "eye", syllables: ["eye"], ms: "mata" },
-        { emoji: "👂", en: "ear", syllables: ["ear"], ms: "telinga" },
-        { emoji: "🤚", en: "hand", syllables: ["hand"], ms: "tangan" }
-    ];
-    // Ensure exactly 60 (list above has 60)
-    console.log("Vocabulary size:", vocabulary.length);
-
-    // ==================== CONVERSATION SETS (ENGLISH) ====================
-    const engConversations = [
-        { name: "Daily Conversation", dialogues: [
-            "Good morning!", "How are you today?", "I am very good, thanks.", "What time is it?", "It's time for lunch."
-        ]},
-        { name: "At the Market", dialogues: [
-            "How much is this?", "I want to buy apples.", "Can you give me a discount?", "That is too expensive!", "Thank you, goodbye."
-        ]},
-        { name: "At School", dialogues: [
-            "May I come in?", "Where is the teacher?", "I love learning English.", "May I go to the toilet?", "Let's read together!"
-        ]},
-        { name: "Family Talk", dialogues: [
-            "This is my mother.", "I love my father.", "Do you have siblings?", "Let's eat dinner together.", "Good night, family!"
-        ]}
+        { emoji: "📖", word: "book", syllables: ["book"] },
+        { emoji: "🍎", word: "apple", syllables: ["ap","ple"] },
+        { emoji: "🐱", word: "cat", syllables: ["cat"] },
+        { emoji: "🐶", word: "dog", syllables: ["dog"] },
+        { emoji: "☀️", word: "sun", syllables: ["sun"] },
+        { emoji: "🚗", word: "car", syllables: ["car"] },
+        { emoji: "🏠", word: "house", syllables: ["house"] },
+        { emoji: "🌸", word: "flower", syllables: ["flow","er"] },
+        { emoji: "🌳", word: "tree", syllables: ["tree"] },
+        { emoji: "🐦", word: "bird", syllables: ["bird"] },
+        { emoji: "🐟", word: "fish", syllables: ["fish"] },
+        { emoji: "⚽", word: "ball", syllables: ["ball"] },
+        { emoji: "🌙", word: "moon", syllables: ["moon"] },
+        { emoji: "⭐", word: "star", syllables: ["star"] },
+        { emoji: "🍌", word: "banana", syllables: ["ba","na","na"] },
+        { emoji: "🐘", word: "elephant", syllables: ["el","e","phant"] },
+        { emoji: "🦁", word: "lion", syllables: ["li","on"] },
+        { emoji: "🦆", word: "duck", syllables: ["duck"] },
+        { emoji: "👟", word: "shoe", syllables: ["shoe"] },
+        { emoji: "🧢", word: "hat", syllables: ["hat"] },
+        { emoji: "🐄", word: "cow", syllables: ["cow"] },
+        { emoji: "🐒", word: "monkey", syllables: ["mon","key"] },
+        { emoji: "🍓", word: "strawberry", syllables: ["straw","ber","ry"] },
+        { emoji: "🚲", word: "bicycle", syllables: ["bi","cy","cle"] },
+        { emoji: "✈️", word: "airplane", syllables: ["air","plane"] },
+        { emoji: "⏰", word: "clock", syllables: ["clock"] },
+        { emoji: "🍕", word: "pizza", syllables: ["piz","za"] },
+        { emoji: "🐸", word: "frog", syllables: ["frog"] },
+        { emoji: "🐝", word: "bee", syllables: ["bee"] },
+        { emoji: "🌽", word: "corn", syllables: ["corn"] },
+        { emoji: "✏️", word: "pen", syllables: ["pen"] },
+        { emoji: "🪑", word: "chair", syllables: ["chair"] },
+        { emoji: "📊", word: "table", syllables: ["ta","ble"] },
+        { emoji: "🚪", word: "door", syllables: ["door"] },
+        { emoji: "🚌", word: "bus", syllables: ["bus"] },
+        { emoji: "🐔", word: "chicken", syllables: ["chick","en"] },
+        { emoji: "🍞", word: "bread", syllables: ["bread"] },
+        { emoji: "🥛", word: "milk", syllables: ["milk"] },
+        { emoji: "🧸", word: "teddy bear", syllables: ["ted","dy","bear"] },
+        { emoji: "🎈", word: "balloon", syllables: ["bal","loon"] },
+        { emoji: "🖍️", word: "crayon", syllables: ["cray","on"] },
+        { emoji: "📏", word: "ruler", syllables: ["rul","er"] },
+        { emoji: "🖌️", word: "paintbrush", syllables: ["paint","brush"] },
+        { emoji: "🪁", word: "kite", syllables: ["kite"] },
+        { emoji: "🍪", word: "cookie", syllables: ["cook","ie"] },
+        { emoji: "🍦", word: "ice cream", syllables: ["ice","cream"] },
+        { emoji: "🥕", word: "carrot", syllables: ["car","rot"] },
+        { emoji: "🍅", word: "tomato", syllables: ["to","ma","to"] },
+        { emoji: "🧀", word: "cheese", syllables: ["cheese"] },
+        { emoji: "🍔", word: "hamburger", syllables: ["ham","bur","ger"] },
+        { emoji: "🥑", word: "avocado", syllables: ["a","vo","ca","do"] },
+        { emoji: "🥥", word: "coconut", syllables: ["co","co","nut"] },
+        { emoji: "🧅", word: "onion", syllables: ["on","ion"] },
+        { emoji: "🥔", word: "potato", syllables: ["po","ta","to"] },
+        { emoji: "🦷", word: "tooth", syllables: ["tooth"] },
+        { emoji: "🫀", word: "heart", syllables: ["heart"] },
+        { emoji: "🧠", word: "brain", syllables: ["brain"] },
+        { emoji: "👁️", word: "eye", syllables: ["eye"] },
+        { emoji: "👂", word: "ear", syllables: ["ear"] },
+        { emoji: "🤚", word: "hand", syllables: ["hand"] }
     ];
 
-    // ==================== CONVERSATION SETS (MALAY) ====================
-    const msConversations = [
-        { name: "Perbualan Harian", dialogues: [
-            "Selamat pagi!", "Apa khabar hari ini?", "Saya sihat, terima kasih.", "Pukul berapa sekarang?", "Waktu untuk makan tengahari."
-        ]},
-        { name: "Di Pasar", dialogues: [
-            "Berapa harga ini?", "Saya nak beli epal.", "Boleh bagi diskaun?", "Mahal sangat!", "Terima kasih, selamat tinggal."
-        ]},
-        { name: "Di Sekolah", dialogues: [
-            "Boleh saya masuk?", "Cikgu di mana?", "Saya suka belajar Bahasa Melayu.", "Boleh saya pergi ke tandas?", "Jom baca sama-sama!"
-        ]},
-        { name: "Perbualan Keluarga", dialogues: [
-            "Ini ibu saya.", "Saya sayang ayah saya.", "Awak ada adik-beradik?", "Mari makan malam bersama.", "Selamat malam keluarga!"
-        ]}
+    // -------------------- CONVERSATIONS (English only) --------------------
+    const conversations = [
+        { title: "👋 Daily Greetings", lines: ["Good morning!", "How are you?", "I am fine, thank you.", "Nice to meet you!", "Goodbye!"] },
+        { title: "🛒 At the Market", lines: ["How much is this?", "I would like an apple.", "That is too expensive.", "Here is your change.", "Thank you, have a nice day!"] },
+        { title: "🏫 School Time", lines: ["May I come in?", "Where is the teacher?", "I love learning English.", "Can I go to the bathroom?", "Let's read together!"] },
+        { title: "👪 Family Fun", lines: ["This is my mother.", "I love my dad.", "Do you have a brother?", "Let's eat dinner.", "Good night, family!"] }
     ];
 
-    // ==================== VOICE SELECTION (AUTO ACCENT) ====================
-    let selectedVoices = { en: null, ms: null };
+    // ==================== VOICE & SPEECH ====================
+    let selectedVoice = null;
     let voiceRetry = 0;
-
-    function getBestVoice(lang) {
+    function getBestEnglishVoice() {
         const voices = window.speechSynthesis?.getVoices() || [];
         if (!voices.length) return null;
-        if (lang === 'en') {
-            let best = voices.find(v => (v.lang === 'en-US') && (v.name.includes('Google') || v.name.includes('Female') || v.name.includes('Zira')));
-            if (!best) best = voices.find(v => v.lang === 'en-US');
-            if (!best) best = voices.find(v => v.lang.startsWith('en'));
-            return best;
-        }
-        if (lang === 'ms') {
-            let best = voices.find(v => v.lang === 'ms-MY');
-            if (!best) best = voices.find(v => v.lang === 'ms');
-            if (!best) best = voices.find(v => v.lang.includes('ms'));
-            return best;
-        }
-        return null;
+        let best = voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Female') || v.name.includes('Zira')));
+        if (!best) best = voices.find(v => v.lang === 'en-US');
+        if (!best) best = voices.find(v => v.lang.startsWith('en'));
+        return best;
     }
-
-    function updateVoices() {
-        selectedVoices.en = getBestVoice('en');
-        selectedVoices.ms = getBestVoice('ms');
+    function updateVoice() {
+        selectedVoice = getBestEnglishVoice();
         const statusDiv = document.getElementById('voiceStatus');
         if (statusDiv) {
-            let enName = selectedVoices.en ? selectedVoices.en.name : 'Default English';
-            let msName = selectedVoices.ms ? selectedVoices.ms.name : 'Default Malay';
-            statusDiv.innerHTML = `✅ Suara sedia: EN: ${enName} | MS: ${msName}`;
-            statusDiv.style.background = "#2e7d5e";
+            let vName = selectedVoice ? selectedVoice.name : 'Default English';
+            statusDiv.innerHTML = `🎤 Voice ready: ${vName}`;
         }
     }
-
     function ensureVoices() {
         const voices = window.speechSynthesis?.getVoices();
-        if (voices && voices.length > 0) {
-            updateVoices();
-        } else if (voiceRetry < 15) {
-            voiceRetry++;
-            setTimeout(ensureVoices, 300);
-        } else {
-            updateVoices();
-        }
+        if (voices && voices.length > 0) updateVoice();
+        else if (voiceRetry < 15) { voiceRetry++; setTimeout(ensureVoices, 300); }
+        else updateVoice();
     }
-
     if (window.speechSynthesis) {
         window.speechSynthesis.getVoices();
-        if (window.speechSynthesis.onvoiceschanged !== undefined) {
-            window.speechSynthesis.onvoiceschanged = ensureVoices;
-        }
+        if (window.speechSynthesis.onvoiceschanged) window.speechSynthesis.onvoiceschanged = ensureVoices;
         ensureVoices();
-    } else {
-        document.getElementById('voiceStatus').innerHTML = "❌ Audio tidak disokong.";
     }
 
-    // ==================== SPEECH FUNCTIONS ====================
-    let autoPlayTimeout = null;
+    let autoTimeout = null;
     function stopAllSpeech() {
         if (window.speechSynthesis) window.speechSynthesis.cancel();
-        if (autoPlayTimeout) clearTimeout(autoPlayTimeout);
+        if (autoTimeout) clearTimeout(autoTimeout);
     }
-
-    function speak(text, langCode, rate = 0.85) {
+    function speakWord(word) {
         stopAllSpeech();
         if (!window.speechSynthesis) return;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = langCode;
-        utterance.rate = rate;
-        if (langCode === 'en-US' && selectedVoices.en) utterance.voice = selectedVoices.en;
-        else if (langCode === 'ms-MY' && selectedVoices.ms) utterance.voice = selectedVoices.ms;
-        window.speechSynthesis.speak(utterance);
+        const utter = new SpeechSynthesisUtterance(word);
+        utter.lang = 'en-US';
+        utter.rate = 0.8;
+        if (selectedVoice) utter.voice = selectedVoice;
+        window.speechSynthesis.speak(utter);
     }
-
     function speakSyllables(syllables) {
         stopAllSpeech();
         let idx = 0;
@@ -498,140 +460,196 @@
             if (idx >= syllables.length) return;
             const utter = new SpeechSynthesisUtterance(syllables[idx]);
             utter.lang = 'en-US';
-            utter.rate = 0.75;
-            if (selectedVoices.en) utter.voice = selectedVoices.en;
+            utter.rate = 0.7;
+            if (selectedVoice) utter.voice = selectedVoice;
             utter.onend = () => { setTimeout(() => { idx++; next(); }, 400); };
             window.speechSynthesis.speak(utter);
         }
         next();
     }
 
-    function autoPlayConversation(dialogues, langCode) {
-        stopAllSpeech();
-        let idx = 0;
-        function playLine() {
-            if (idx >= dialogues.length) return;
-            speak(dialogues[idx], langCode, 0.85);
-            autoPlayTimeout = setTimeout(() => { idx++; playLine(); }, 1800);
-        }
-        playLine();
-    }
-
     // ==================== RENDER VOCABULARY ====================
     function renderVocabulary() {
         const container = document.getElementById('vocabGrid');
-        if (!container) return;
         container.innerHTML = '';
         vocabulary.forEach(v => {
-            const syllDisplay = v.syllables.join('·');
             const card = document.createElement('div'); card.className = 'card';
             card.innerHTML = `
                 <div class="emoji-box">${v.emoji}</div>
-                <div class="eng-word">${v.en}</div>
-                <div class="syllable">🎵 ${syllDisplay}</div>
-                <div class="ms-word">🇲🇾 ${v.ms}</div>
-                <div class="btn-group">
-                    <button class="audio-btn btn-en">🔊 English</button>
-                    <button class="audio-btn btn-ms">🔊 Melayu</button>
-                </div>
-                <button class="audio-btn btn-syll">🔊 Suku Kata (English)</button>
+                <div class="eng-word">${v.word}</div>
+                <div class="syllable">🔊 ${v.syllables.join('·')}</div>
+                <div><button class="audio-btn" data-word="${v.word}">🔊 Say Word</button>
+                <button class="audio-btn" data-syllables='${JSON.stringify(v.syllables)}'>🔊 Syllables</button></div>
             `;
-            card.querySelector('.btn-en').onclick = () => speak(v.en, 'en-US', 0.85);
-            card.querySelector('.btn-ms').onclick = () => speak(v.ms, 'ms-MY', 0.85);
-            card.querySelector('.btn-syll').onclick = () => speakSyllables(v.syllables);
+            const wordBtn = card.querySelector('[data-word]');
+            wordBtn.onclick = () => speakWord(v.word);
+            const syllBtn = card.querySelector('[data-syllables]');
+            syllBtn.onclick = () => speakSyllables(v.syllables);
             container.appendChild(card);
         });
     }
 
-    // ==================== RENDER CONVERSATIONS (ENGLISH & MALAY SEPARATE) ====================
+    // ==================== RENDER CONVERSATIONS ====================
     function renderConversations() {
-        const engContainer = document.getElementById('engConvoContainer');
-        const msContainer = document.getElementById('msConvoContainer');
-        if (!engContainer || !msContainer) return;
-        
-        // English conversations
-        engContainer.innerHTML = '';
-        engConversations.forEach((set, idx) => {
-            const section = document.createElement('div'); section.className = 'convo-section';
-            section.innerHTML = `
-                <div class="convo-title">
-                    <span>${set.name}</span>
-                    <button class="play-auto-btn" data-set="${idx}" data-lang="en"><i class="fas fa-play"></i> Main Semua</button>
-                </div>
-                <div class="convo-dialogue" id="eng-dialogue-${idx}"></div>
-            `;
-            const dialogueDiv = section.querySelector(`.convo-dialogue`);
-            set.dialogues.forEach((line, lineIdx) => {
-                const lineDiv = document.createElement('div'); lineDiv.className = 'dialogue-line';
-                lineDiv.innerHTML = `
-                    <div class="dialogue-text">${line}</div>
-                    <div class="dialogue-buttons">
-                        <button class="mini-btn btn-en" data-line="${lineIdx}">🔊 Sebut</button>
-                    </div>
-                `;
-                dialogueDiv.appendChild(lineDiv);
+        const container = document.getElementById('convoContainer');
+        container.innerHTML = '';
+        conversations.forEach(conv => {
+            const div = document.createElement('div'); div.className = 'convo-card';
+            div.innerHTML = `<div class="convo-title">${conv.title} <button class="play-all-btn" data-lines='${JSON.stringify(conv.lines)}'>🔊 Play All</button></div>`;
+            const linesDiv = document.createElement('div');
+            conv.lines.forEach(line => {
+                const lineDiv = document.createElement('div'); lineDiv.className = 'convo-line';
+                lineDiv.innerHTML = `<span>${line}</span><button class="audio-btn speak-line">🔊 Speak</button>`;
+                lineDiv.querySelector('.speak-line').onclick = () => speakWord(line);
+                linesDiv.appendChild(lineDiv);
             });
-            engContainer.appendChild(section);
-        });
-        
-        // Malay conversations
-        msContainer.innerHTML = '';
-        msConversations.forEach((set, idx) => {
-            const section = document.createElement('div'); section.className = 'convo-section';
-            section.innerHTML = `
-                <div class="convo-title">
-                    <span>${set.name}</span>
-                    <button class="play-auto-btn" data-set="${idx}" data-lang="ms"><i class="fas fa-play"></i> Main Semua</button>
-                </div>
-                <div class="convo-dialogue" id="ms-dialogue-${idx}"></div>
-            `;
-            const dialogueDiv = section.querySelector(`.convo-dialogue`);
-            set.dialogues.forEach((line, lineIdx) => {
-                const lineDiv = document.createElement('div'); lineDiv.className = 'dialogue-line';
-                lineDiv.innerHTML = `
-                    <div class="dialogue-text">${line}</div>
-                    <div class="dialogue-buttons">
-                        <button class="mini-btn btn-ms" data-line="${lineIdx}">🔊 Sebut</button>
-                    </div>
-                `;
-                dialogueDiv.appendChild(lineDiv);
-            });
-            msContainer.appendChild(section);
-        });
-        
-        // Attach events for English
-        document.querySelectorAll('#engConvoContainer .play-auto-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                const idx = parseInt(btn.dataset.set);
-                const dialogues = engConversations[idx].dialogues;
-                autoPlayConversation(dialogues, 'en-US');
-            };
-        });
-        document.querySelectorAll('#engConvoContainer .mini-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                const lineDiv = btn.closest('.dialogue-line');
-                const text = lineDiv.querySelector('.dialogue-text').innerText;
-                speak(text, 'en-US', 0.85);
-            };
-        });
-        // Attach events for Malay
-        document.querySelectorAll('#msConvoContainer .play-auto-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                const idx = parseInt(btn.dataset.set);
-                const dialogues = msConversations[idx].dialogues;
-                autoPlayConversation(dialogues, 'ms-MY');
-            };
-        });
-        document.querySelectorAll('#msConvoContainer .mini-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                const lineDiv = btn.closest('.dialogue-line');
-                const text = lineDiv.querySelector('.dialogue-text').innerText;
-                speak(text, 'ms-MY', 0.85);
+            div.appendChild(linesDiv);
+            container.appendChild(div);
+            div.querySelector('.play-all-btn').onclick = (e) => {
+                const lines = JSON.parse(e.target.dataset.lines);
+                let idx = 0;
+                function playNext() {
+                    if (idx >= lines.length) return;
+                    speakWord(lines[idx]);
+                    autoTimeout = setTimeout(() => { idx++; playNext(); }, 1800);
+                }
+                stopAllSpeech();
+                playNext();
             };
         });
     }
 
-    // ==================== TABS ====================
+    // ==================== GAMES ====================
+    // Helper: get random vocab items for games
+    let gameWords = [...vocabulary];
+    function getRandomWordItem() {
+        return gameWords[Math.floor(Math.random() * gameWords.length)];
+    }
+
+    // ----- Game 1: Match Picture (multiple choice) -----
+    let matchCurrentItem = null;
+    let matchScore = 0;
+    function refreshMatchGame() {
+        matchCurrentItem = getRandomWordItem();
+        document.getElementById('matchEmoji').innerHTML = matchCurrentItem.emoji;
+        // generate 3 random wrong options + correct
+        let options = new Set();
+        options.add(matchCurrentItem.word);
+        while (options.size < 4) {
+            const randomWord = gameWords[Math.floor(Math.random() * gameWords.length)].word;
+            options.add(randomWord);
+        }
+        let optsArray = Array.from(options);
+        optsArray.sort(() => Math.random() - 0.5);
+        const container = document.getElementById('matchOptions');
+        container.innerHTML = '';
+        optsArray.forEach(opt => {
+            const btn = document.createElement('div'); btn.className = 'game-option';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (opt === matchCurrentItem.word) {
+                    matchScore++;
+                    document.getElementById('matchFeedback').innerHTML = '✅ Correct! +1 point';
+                    document.getElementById('matchFeedback').style.color = 'green';
+                } else {
+                    document.getElementById('matchFeedback').innerHTML = `❌ Oops! Correct answer: ${matchCurrentItem.word}`;
+                    document.getElementById('matchFeedback').style.color = 'red';
+                }
+                document.getElementById('matchScore').innerText = `Score: ${matchScore}`;
+                // disable options temporarily
+                document.querySelectorAll('#matchOptions .game-option').forEach(b => b.style.pointerEvents = 'none');
+                setTimeout(() => {
+                    refreshMatchGame();
+                    document.querySelectorAll('#matchOptions .game-option').forEach(b => b.style.pointerEvents = 'auto');
+                    document.getElementById('matchFeedback').innerHTML = '';
+                }, 1500);
+            };
+            container.appendChild(btn);
+        });
+    }
+    document.getElementById('nextMatchBtn').onclick = () => refreshMatchGame();
+
+    // ----- Game 2: Spelling Challenge -----
+    let spellCurrentItem = null;
+    let spellScore = 0;
+    function refreshSpellingGame() {
+        spellCurrentItem = getRandomWordItem();
+        document.getElementById('spellEmoji').innerHTML = spellCurrentItem.emoji;
+        document.getElementById('spellInput').value = '';
+        document.getElementById('spellFeedback').innerHTML = '';
+    }
+    function checkSpelling() {
+        const userAnswer = document.getElementById('spellInput').value.trim().toLowerCase();
+        if (userAnswer === spellCurrentItem.word.toLowerCase()) {
+            spellScore++;
+            document.getElementById('spellFeedback').innerHTML = '🎉 Correct! Great spelling!';
+            document.getElementById('spellFeedback').style.color = 'green';
+        } else {
+            document.getElementById('spellFeedback').innerHTML = `😢 Wrong! The correct spelling is "${spellCurrentItem.word}".`;
+            document.getElementById('spellFeedback').style.color = 'red';
+        }
+        document.getElementById('spellScore').innerText = `Score: ${spellScore}`;
+        setTimeout(() => { refreshSpellingGame(); }, 2000);
+    }
+    document.getElementById('checkSpellBtn').onclick = checkSpelling;
+    document.getElementById('nextSpellBtn').onclick = () => refreshSpellingGame();
+
+    // ----- Game 3: Listening Quiz -----
+    let listenCurrentItem = null;
+    let listenScore = 0;
+    function refreshListeningGame() {
+        listenCurrentItem = getRandomWordItem();
+        // generate 3 wrong options
+        let options = new Set();
+        options.add(listenCurrentItem.word);
+        while (options.size < 4) {
+            const randomWord = gameWords[Math.floor(Math.random() * gameWords.length)].word;
+            options.add(randomWord);
+        }
+        let optsArray = Array.from(options);
+        optsArray.sort(() => Math.random() - 0.5);
+        const container = document.getElementById('listenOptions');
+        container.innerHTML = '';
+        optsArray.forEach(opt => {
+            const btn = document.createElement('div'); btn.className = 'game-option';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (opt === listenCurrentItem.word) {
+                    listenScore++;
+                    document.getElementById('listenFeedback').innerHTML = '✅ Perfect! +1 point';
+                    document.getElementById('listenFeedback').style.color = 'green';
+                } else {
+                    document.getElementById('listenFeedback').innerHTML = `❌ The word was "${listenCurrentItem.word}". Try again!`;
+                    document.getElementById('listenFeedback').style.color = 'red';
+                }
+                document.getElementById('listenScore').innerText = `Score: ${listenScore}`;
+                document.querySelectorAll('#listenOptions .game-option').forEach(b => b.style.pointerEvents = 'none');
+                setTimeout(() => {
+                    refreshListeningGame();
+                    document.querySelectorAll('#listenOptions .game-option').forEach(b => b.style.pointerEvents = 'auto');
+                    document.getElementById('listenFeedback').innerHTML = '';
+                }, 1500);
+            };
+            container.appendChild(btn);
+        });
+    }
+    document.getElementById('playListenBtn').onclick = () => {
+        if (listenCurrentItem) speakWord(listenCurrentItem.word);
+    };
+    document.getElementById('nextListenBtn').onclick = () => refreshListeningGame();
+
+    // Initialize all
+    function initGames() {
+        refreshMatchGame();
+        refreshSpellingGame();
+        refreshListeningGame();
+        matchScore = 0; spellScore = 0; listenScore = 0;
+        document.getElementById('matchScore').innerText = 'Score: 0';
+        document.getElementById('spellScore').innerText = 'Score: 0';
+        document.getElementById('listenScore').innerText = 'Score: 0';
+    }
+
+    // Tabs
     function initTabs() {
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
@@ -641,6 +659,7 @@
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 stopAllSpeech();
+                if (tabId === 'games') initGames();
             });
         });
     }
@@ -648,6 +667,7 @@
     renderVocabulary();
     renderConversations();
     initTabs();
+    initGames();
     window.addEventListener('beforeunload', () => stopAllSpeech());
 </script>
 </body>
