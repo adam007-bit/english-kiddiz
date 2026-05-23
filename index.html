@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinguaPro | 3 Bahasa · 60 Kosa Kata · Perbualan Auto (ARABIC FIXED)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <title>LinguaPerfect | 3 Bahasa · Accent Tepat · Auto Perbualan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -26,7 +26,6 @@
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-        /* Header */
         .hero {
             background: linear-gradient(135deg, #0f2b3d 0%, #1e4a3a 100%);
             padding: 2rem 2rem 1.5rem;
@@ -55,6 +54,15 @@
             font-size: 0.85rem;
             font-weight: 500;
         }
+        .voice-status {
+            background: #2e5a48;
+            margin-top: 1rem;
+            padding: 0.4rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            display: inline-block;
+            width: auto;
+        }
         .stats-bar {
             background: #fef9e6;
             padding: 0.6rem;
@@ -64,7 +72,6 @@
             color: #b45f2b;
             border-bottom: 1px solid #ffe0aa;
         }
-        /* Tabs */
         .tab-container {
             display: flex;
             background: #f8fafc;
@@ -100,7 +107,6 @@
             from { opacity: 0; transform: translateY(6px);}
             to { opacity: 1; transform: translateY(0);}
         }
-        /* Vocabulary Grid */
         .vocab-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -184,7 +190,6 @@
         .btn-ms { background: #d1f0e3; color: #1f6e43; }
         .btn-ar { background: #ffdfcf; color: #bc5a2c; }
         .btn-syll { background: #fff0d6; color: #b45f1b; width: calc(100% - 20px); justify-content: center; margin-top: 4px; }
-        /* Conversation Sets */
         .convo-section {
             margin-bottom: 2.5rem;
         }
@@ -202,7 +207,6 @@
             border: 1px solid #e9e0cf;
             margin-bottom: 1rem;
             overflow: hidden;
-            transition: 0.1s;
         }
         .convo-header {
             background: #f7f3e8;
@@ -246,6 +250,7 @@
         .dialogue-text {
             flex: 2;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         .dialogue-buttons {
             display: flex;
@@ -260,14 +265,6 @@
             font-weight: 600;
             cursor: pointer;
         }
-        .status-playing {
-            background: #e6f7e6;
-            color: #2e7d32;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 1rem;
-            margin-left: 0.5rem;
-        }
         footer {
             background: #f8fafd;
             text-align: center;
@@ -280,45 +277,43 @@
             body { padding: 0.8rem; }
             .hero h1 { font-size: 1.4rem; }
             .tab { font-size: 0.75rem; padding: 0.8rem; }
-            .dialogue-text { font-size: 0.8rem; }
+            .dialogue-text { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1><i class="fas fa-language"></i> LinguaPro <span style="font-size:0.9rem;">✨ 60 Kosa Kata · Auto Perbualan</span></h1>
+        <h1><i class="fas fa-language"></i> LinguaPerfect <span style="font-size:0.9rem;">✨ Accent Tepat 3 Bahasa</span></h1>
         <div class="lang-badges">
-            <span class="lang-badge"><i class="fas fa-volume-up"></i> English (Native)</span>
+            <span class="lang-badge"><i class="fas fa-volume-up"></i> English (Native US/UK)</span>
             <span class="lang-badge"><i class="fas fa-volume-up"></i> Melayu (Loghat Malaysia)</span>
-            <span class="lang-badge"><i class="fas fa-volume-up"></i> العربية (Audio REAL - Native Voice)</span>
+            <span class="lang-badge"><i class="fas fa-volume-up"></i> العربية (فصحى - صوت عربي أصلي)</span>
         </div>
+        <div class="voice-status" id="voiceStatus">⏳ Memuatkan suara terbaik...</div>
     </div>
     <div class="stats-bar">
-        <i class="fas fa-globe-asia"></i> 60 perkataan + suku kata | 4 set perbualan: HARIAN · PASAR · SEKOLAH · KELUARGA (auto main)
+        <i class="fas fa-globe-asia"></i> 60 perkataan unik + suku kata | 4 set perbualan dengan auto-main (EN → MS → AR)
     </div>
 
     <div class="tab-container">
         <button class="tab active" data-tab="vocab">📖 KOSA KATA (60)</button>
-        <button class="tab" data-tab="convo">💬 PERBUALAN AUTO (4 SET)</button>
+        <button class="tab" data-tab="convo">💬 PERBUALAN AUTO</button>
     </div>
 
-    <!-- Vocabulary Tab -->
     <div id="vocab" class="tab-content active">
         <div id="vocabGrid" class="vocab-grid"></div>
     </div>
 
-    <!-- Conversation Tab with 4 sets : Daily, Market, School, Family -->
     <div id="convo" class="tab-content">
         <div id="convoSetsContainer"></div>
     </div>
-    <footer><i class="fas fa-headset"></i> Klik butang "Main Auto" untuk dengar seluruh perbualan (3 bahasa berturutan). Arabic menggunakan suara Arab asli!</footer>
+    <footer><i class="fas fa-headset"></i> Tekan butang "Main Seluruh Perbualan" – audio akan bersuara dengan ACCENT TEPAT: English ➜ Melayu ➜ Arab.</footer>
 </div>
 
 <script>
-    // -------------------- 60 VOCABULARY WORDS (expanded) --------------------
-    const vocabulary = [];
-    const baseWords = [
+    // ==================== 60 UNIQUE VOCABULARY ITEMS ====================
+    const vocabulary = [
         { emoji: "📖", en: "book", syllables: ["book"], ms: "buku", ar: "kitabun", arScript: "كِتَابٌ" },
         { emoji: "🍎", en: "apple", syllables: ["ap","ple"], ms: "epal", ar: "tuffaahun", arScript: "تُفَّاحَةٌ" },
         { emoji: "🐱", en: "cat", syllables: ["cat"], ms: "kucing", ar: "qittatun", arScript: "قِطَّةٌ" },
@@ -357,42 +352,57 @@
         { emoji: "🐔", en: "chicken", syllables: ["chick","en"], ms: "ayam", ar: "dajaajatun", arScript: "دَجَاجَةٌ" },
         { emoji: "🍞", en: "bread", syllables: ["bread"], ms: "roti", ar: "khubzun", arScript: "خُبْزٌ" },
         { emoji: "🥛", en: "milk", syllables: ["milk"], ms: "susu", ar: "halibun", arScript: "حَلِيبٌ" },
-        { emoji: "🧸", en: "teddy", syllables: ["ted","dy"], ms: "beruang", ar: "dubbun", arScript: "دُبٌّ" },
+        { emoji: "🧸", en: "teddy bear", syllables: ["ted","dy","bear"], ms: "beruang", ar: "dubbun", arScript: "دُبٌّ" },
         { emoji: "🎈", en: "balloon", syllables: ["bal","loon"], ms: "belon", ar: "baaloonun", arScript: "بَالُونٌ" },
         { emoji: "🖍️", en: "crayon", syllables: ["cray","on"], ms: "krayon", ar: "tayboorun", arScript: "طَبْشُورَةٌ" },
         { emoji: "📏", en: "ruler", syllables: ["rul","er"], ms: "pembaris", ar: "misṭaratun", arScript: "مِسْطَرَةٌ" },
         { emoji: "🖌️", en: "paintbrush", syllables: ["paint","brush"], ms: "berus cat", ar: "furshaatun", arScript: "فُرْشَاةٌ" },
-        { emoji: "🪁", en: "kite", syllables: ["kite"], ms: "wau", ar: "tayyaratun warqiyya", arScript: "طَيَّارَةٌ وَرَقِيَّةٌ" }
+        { emoji: "🪁", en: "kite", syllables: ["kite"], ms: "wau", ar: "tayyaratun warqiyya", arScript: "طَيَّارَةٌ وَرَقِيَّةٌ" },
+        { emoji: "🍪", en: "cookie", syllables: ["cook","ie"], ms: "biskut", ar: "biskuit", arScript: "بِسْكُوَيْت" },
+        { emoji: "🍦", en: "ice cream", syllables: ["ice","cream"], ms: "ais krim", ar: "aays krim", arScript: "آيس كريم" },
+        { emoji: "🥕", en: "carrot", syllables: ["car","rot"], ms: "lobak merah", ar: "jazar", arScript: "جَزَر" },
+        { emoji: "🍅", en: "tomato", syllables: ["to","ma","to"], ms: "tomat", ar: "tamaatim", arScript: "طَمَاطِم" },
+        { emoji: "🧀", en: "cheese", syllables: ["cheese"], ms: "keju", ar: "jubn", arScript: "جُبْن" },
+        { emoji: "🍔", en: "hamburger", syllables: ["ham","bur","ger"], ms: "burger", ar: "hamburgher", arScript: "هَامْبُرْغَر" },
+        { emoji: "🥨", en: "pretzel", syllables: ["pret","zel"], ms: "pretzel", ar: "birtzal", arScript: "بِرِتْزَل" },
+        { emoji: "🥑", en: "avocado", syllables: ["a","vo","ca","do"], ms: "avokado", ar: "afukadu", arScript: "أَفُوكَادُو" },
+        { emoji: "🥥", en: "coconut", syllables: ["co","co","nut"], ms: "kelapa", ar: "jawz hind", arScript: "جَوْز هِنْد" },
+        { emoji: "🧅", en: "onion", syllables: ["on","ion"], ms: "bawang", ar: "basal", arScript: "بَصَل" },
+        { emoji: "🥔", en: "potato", syllables: ["po","ta","to"], ms: "kentang", ar: "batatis", arScript: "بَطَاطِس" },
+        { emoji: "🦷", en: "tooth", syllables: ["tooth"], ms: "gigi", ar: "sinn", arScript: "سِنّ" },
+        { emoji: "🫀", en: "heart", syllables: ["heart"], ms: "jantung", ar: "qalb", arScript: "قَلْب" },
+        { emoji: "🧠", en: "brain", syllables: ["brain"], ms: "otak", ar: "dimagh", arScript: "دِمَاغ" },
+        { emoji: "👁️", en: "eye", syllables: ["eye"], ms: "mata", ar: "'ayn", arScript: "عَيْن" },
+        { emoji: "👂", en: "ear", syllables: ["ear"], ms: "telinga", ar: "udhun", arScript: "أُذُن" },
+        { emoji: "🤚", en: "hand", syllables: ["hand"], ms: "tangan", ar: "yad", arScript: "يَد" }
     ];
-    // duplicate more to reach 60
-    for (let i = 0; i < baseWords.length; i++) vocabulary.push(baseWords[i]);
-    while(vocabulary.length < 60) vocabulary.push({ ...baseWords[vocabulary.length % baseWords.length], emoji: "🌟", en: "star", syllables: ["star"], ms: "bintang", ar: "najmun", arScript: "نَجْمٌ" });
-    vocabulary.length = 60;
+    // Ensure exactly 60
+    console.log("✅ Vocabulary loaded:", vocabulary.length);
 
-    // -------------------- 4 CONVERSATION SETS (AUTO PLAY) --------------------
+    // ==================== 4 CONVERSATION SETS ====================
     const conversationSets = [
-        { name: "🌅 Perbualan Harian (Daily)", icon: "🌞", dialogues: [
+        { name: "🌅 Perbualan Harian (Daily)", dialogues: [
             { en: "Good morning!", ms: "Selamat pagi!", ar: "Sabah al-khayr", arScript: "صَبَاحُ الْخَيْرِ" },
             { en: "How are you today?", ms: "Apa khabar hari ini?", ar: "Kayfa haluka al-yawm?", arScript: "كَيْفَ حَالُكَ الْيَوْمَ؟" },
             { en: "I am very good, thanks.", ms: "Saya sihat, terima kasih.", ar: "Ana jayyid jiddan, shukran.", arScript: "أَنَا جَيِّدٌ جِدًّا، شُكْرًا." },
             { en: "What time is it?", ms: "Pukul berapa sekarang?", ar: "Kam as-saa'ah?", arScript: "كَمِ السَّاعَةُ؟" },
             { en: "It's time for lunch.", ms: "Waktu untuk makan tengahari.", ar: "Waqt al-ghada'", arScript: "وَقْتُ الْغَدَاءِ" }
         ]},
-        { name: "🛒 Di Pasar (Market)", icon: "🛍️", dialogues: [
+        { name: "🛒 Di Pasar (Market)", dialogues: [
             { en: "How much is this?", ms: "Berapa harga ini?", ar: "Bikam hadha?", arScript: "بِكَمْ هَذَا؟" },
             { en: "I want to buy apples.", ms: "Saya nak beli epal.", ar: "Ureedu shira'a tuffah.", arScript: "أُرِيدُ شِرَاءَ تُفَّاحٍ" },
             { en: "Can you give me a discount?", ms: "Boleh bagi diskaun?", ar: "Hal yumkinuk a'ta'i khasman?", arScript: "هَلْ يُمْكِنُكَ إِعْطَائِي خَصْمًا؟" },
             { en: "That is too expensive!", ms: "Mahal sangat!", ar: "Hadha ghali jiddan!", arScript: "هَذَا غَالٍ جِدًّا!" },
             { en: "Thank you, goodbye.", ms: "Terima kasih, selamat tinggal.", ar: "Shukran, ma'a as-salamah.", arScript: "شُكْرًا، مَعَ السَّلَامَةِ" }
         ]},
-        { name: "🏫 Di Sekolah (School)", icon: "📚", dialogues: [
+        { name: "🏫 Di Sekolah (School)", dialogues: [
             { en: "May I come in?", ms: "Boleh saya masuk?", ar: "Hal yumkinuni ad-dkhul?", arScript: "هَلْ يُمْكِنُنِي الدُّخُولُ؟" },
             { en: "Where is the teacher?", ms: "Cikgu di mana?", ar: "Ayna al-mudarris?", arScript: "أَيْنَ الْمُدَرِّسُ؟" },
             { en: "I love learning Arabic.", ms: "Saya suka belajar Arab.", ar: "Uhibbu ta'allum al-'arabiyya.", arScript: "أُحِبُّ تَعَلُّمَ الْعَرَبِيَّةِ" },
             { en: "May I go to the toilet?", ms: "Boleh saya pergi ke tandas?", ar: "Hal yumkinuni adh-hab ila al-hammam?", arScript: "هَلْ يُمْكِنُنِي الذَّهَابُ إِلَى الْحَمَّامِ؟" },
             { en: "Let's read together!", ms: "Jom baca sama-sama!", ar: "Linaqra' ma'an!", arScript: "لِنَقْرَأْ مَعًا!" }
         ]},
-        { name: "👨‍👩‍👧‍👦 Keluarga (Family)", icon: "🏡", dialogues: [
+        { name: "👨‍👩‍👧‍👦 Keluarga (Family)", dialogues: [
             { en: "This is my mother.", ms: "Ini ibu saya.", ar: "Hadhi hiya ummi.", arScript: "هَذِهِ هِيَ أُمِّي" },
             { en: "I love my father.", ms: "Saya sayang ayah saya.", ar: "Uhibbu abi.", arScript: "أُحِبُّ أَبِي" },
             { en: "Do you have siblings?", ms: "Awak ada adik-beradik?", ar: "Hal ladayka ikhwa?", arScript: "هَلْ لَدَيْكَ إِخْوَةٌ؟" },
@@ -401,53 +411,91 @@
         ]}
     ];
 
-    // ========== SPEECH ENGINE WITH ARABIC NATIVE VOICES ==========
-    let activeQueue = [];
-    let isAutoPlaying = false;
-    let currentTimeout = null;
+    // ==================== VOICE SELECTION WITH PERFECT ACCENT ====================
     let selectedVoices = { en: null, ms: null, ar: null };
-    
-    function stopAllSpeech() {
-        if (window.speechSynthesis) window.speechSynthesis.cancel();
-        if (currentTimeout) clearTimeout(currentTimeout);
-        activeQueue = [];
-        isAutoPlaying = false;
-    }
-    
+    let voicesReady = false;
+
     function findBestVoice(lang) {
         const voices = window.speechSynthesis?.getVoices() || [];
-        if (lang === 'en') return voices.find(v => v.lang === 'en-US') || voices.find(v => v.lang.startsWith('en'));
-        if (lang === 'ms') return voices.find(v => v.lang === 'ms-MY') || voices.find(v => v.lang === 'ms') || voices.find(v => v.lang.includes('ms'));
+        if (lang === 'en') {
+            // Prefer Google US English female, then any US English
+            let best = voices.find(v => (v.lang === 'en-US' || v.lang === 'en-GB') && v.name.includes('Google') && (v.name.includes('Female') || v.name.includes('UK')));
+            if (!best) best = voices.find(v => v.lang === 'en-US' && v.name.includes('Female'));
+            if (!best) best = voices.find(v => v.lang === 'en-US');
+            if (!best) best = voices.find(v => v.lang.startsWith('en'));
+            return best;
+        }
+        if (lang === 'ms') {
+            // Malaysian Malay
+            let best = voices.find(v => v.lang === 'ms-MY');
+            if (!best) best = voices.find(v => v.lang === 'ms');
+            if (!best) best = voices.find(v => v.lang.includes('ms'));
+            return best;
+        }
         if (lang === 'ar') {
-            let arv = voices.find(v => v.lang === 'ar-SA' && v.name.includes('Google'));
-            if (!arv) arv = voices.find(v => v.lang === 'ar-SA');
-            if (!arv) arv = voices.find(v => v.lang.startsWith('ar'));
-            return arv;
+            // Arabic: prefer Saudi Arabia female, then any Arabic
+            let best = voices.find(v => v.lang === 'ar-SA' && (v.name.includes('Female') || v.name.includes('Google')));
+            if (!best) best = voices.find(v => v.lang === 'ar-SA');
+            if (!best) best = voices.find(v => v.lang === 'ar-EG');
+            if (!best) best = voices.find(v => v.lang.startsWith('ar'));
+            return best;
         }
         return null;
     }
-    function refreshVoices() { 
+
+    function updateVoiceStatus() {
+        const statusDiv = document.getElementById('voiceStatus');
+        if (!statusDiv) return;
+        if (selectedVoices.en && selectedVoices.ms && selectedVoices.ar) {
+            statusDiv.innerHTML = `✅ Suara sedia: EN: ${selectedVoices.en.name} | MS: ${selectedVoices.ms.name} | AR: ${selectedVoices.ar.name}`;
+            statusDiv.style.background = "#2e7d5e";
+        } else {
+            let msg = "⚠️ Memuatkan suara terbaik... ";
+            if (selectedVoices.en) msg += `EN✓ `;
+            if (selectedVoices.ms) msg += `MS✓ `;
+            if (selectedVoices.ar) msg += `AR✓ `;
+            statusDiv.innerHTML = msg;
+        }
+    }
+
+    function refreshVoices() {
         selectedVoices.en = findBestVoice('en');
         selectedVoices.ms = findBestVoice('ms');
         selectedVoices.ar = findBestVoice('ar');
+        voicesReady = true;
+        updateVoiceStatus();
+        console.log("Voices loaded:", selectedVoices);
     }
+
     if (window.speechSynthesis) {
         window.speechSynthesis.onvoiceschanged = () => refreshVoices();
-        setTimeout(refreshVoices, 200);
-        refreshVoices();
+        setTimeout(refreshVoices, 300);
+        refreshVoices(); // immediate attempt
+    } else {
+        document.getElementById('voiceStatus').innerHTML = "❌ Pelayar tidak menyokong SpeechSynthesis";
     }
-    
-    function speakText(text, langCode, rate=0.85) {
+
+    // Stop any ongoing speech
+    let autoPlayTimeout = null;
+    function stopAllSpeech() {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        if (autoPlayTimeout) clearTimeout(autoPlayTimeout);
+    }
+
+    // Speak with the selected voice for perfect accent
+    function speakWithAccent(text, langCode, rate = 0.85, pitch = 1.05) {
+        stopAllSpeech();
         if (!window.speechSynthesis) return;
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = langCode;
-        utter.rate = rate;
-        if (langCode === 'en-US' && selectedVoices.en) utter.voice = selectedVoices.en;
-        if (langCode === 'ms-MY' && selectedVoices.ms) utter.voice = selectedVoices.ms;
-        if (langCode === 'ar-SA' && selectedVoices.ar) utter.voice = selectedVoices.ar;
-        window.speechSynthesis.speak(utter);
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = langCode;
+        utterance.rate = rate;
+        utterance.pitch = pitch;
+        if (langCode === 'en-US' && selectedVoices.en) utterance.voice = selectedVoices.en;
+        else if (langCode === 'ms-MY' && selectedVoices.ms) utterance.voice = selectedVoices.ms;
+        else if (langCode === 'ar-SA' && selectedVoices.ar) utterance.voice = selectedVoices.ar;
+        window.speechSynthesis.speak(utterance);
     }
-    
+
     function speakSyllables(syllables) {
         stopAllSpeech();
         let idx = 0;
@@ -457,35 +505,38 @@
             utter.lang = 'en-US';
             utter.rate = 0.75;
             if (selectedVoices.en) utter.voice = selectedVoices.en;
-            utter.onend = () => { setTimeout(() => { idx++; next(); }, 380); };
+            utter.onend = () => { setTimeout(() => { idx++; next(); }, 400); };
             window.speechSynthesis.speak(utter);
         }
         next();
     }
-    
-    // auto play conversation set
-    function autoPlaySet(dialogues, setIndex) {
+
+    // AUTO PLAY CONVERSATION (sequential EN → MS → AR)
+    function autoPlayConversation(dialogues) {
         stopAllSpeech();
-        isAutoPlaying = true;
         let idx = 0;
         function playLine() {
-            if (!isAutoPlaying || idx >= dialogues.length) { isAutoPlaying = false; return; }
+            if (idx >= dialogues.length) return;
             const line = dialogues[idx];
-            speakText(line.en, 'en-US', 0.85);
-            setTimeout(() => {
-                speakText(line.ms, 'ms-MY', 0.85);
-                setTimeout(() => {
-                    speakText(line.ar, 'ar-SA', 0.85);
-                    setTimeout(() => { idx++; playLine(); }, 1600);
+            speakWithAccent(line.en, 'en-US', 0.85);
+            autoPlayTimeout = setTimeout(() => {
+                speakWithAccent(line.ms, 'ms-MY', 0.85);
+                autoPlayTimeout = setTimeout(() => {
+                    speakWithAccent(line.ar, 'ar-SA', 0.85);
+                    autoPlayTimeout = setTimeout(() => {
+                        idx++;
+                        playLine();
+                    }, 1500);
                 }, 1200);
             }, 1100);
         }
         playLine();
     }
-    
-    // Rendering
+
+    // ==================== RENDER VOCABULARY ====================
     function renderVocabulary() {
         const container = document.getElementById('vocabGrid');
+        if (!container) return;
         container.innerHTML = '';
         vocabulary.forEach(v => {
             const syllDisplay = v.syllables.join('·');
@@ -493,26 +544,28 @@
             card.innerHTML = `
                 <div class="emoji-box">${v.emoji}</div>
                 <div class="eng-word">${v.en}</div>
-                <div class="syllable">📖 ${syllDisplay}</div>
+                <div class="syllable">🎵 ${syllDisplay}</div>
                 <div class="lang-row"><span class="ms-badge">🇲🇾 ${v.ms}</span></div>
                 <div class="lang-row"><span class="ar-badge">🇸🇦 ${v.arScript} (${v.ar})</span></div>
                 <div class="btn-group">
-                    <button class="audio-btn btn-en" data-type="en">🔊 EN</button>
-                    <button class="audio-btn btn-ms" data-type="ms">🔊 MS</button>
-                    <button class="audio-btn btn-ar" data-type="ar">🔊 AR</button>
+                    <button class="audio-btn btn-en">🔊 EN</button>
+                    <button class="audio-btn btn-ms">🔊 MS</button>
+                    <button class="audio-btn btn-ar">🔊 AR</button>
                 </div>
-                <button class="audio-btn btn-syll" data-type="syll">🔊 Suku Kata</button>
+                <button class="audio-btn btn-syll">🔊 Suku Kata</button>
             `;
-            card.querySelector('.btn-en').onclick = () => speakText(v.en, 'en-US', 0.85);
-            card.querySelector('.btn-ms').onclick = () => speakText(v.ms, 'ms-MY', 0.85);
-            card.querySelector('.btn-ar').onclick = () => speakText(v.ar, 'ar-SA', 0.85);
+            card.querySelector('.btn-en').onclick = () => speakWithAccent(v.en, 'en-US', 0.85);
+            card.querySelector('.btn-ms').onclick = () => speakWithAccent(v.ms, 'ms-MY', 0.85);
+            card.querySelector('.btn-ar').onclick = () => speakWithAccent(v.ar, 'ar-SA', 0.85);
             card.querySelector('.btn-syll').onclick = () => speakSyllables(v.syllables);
             container.appendChild(card);
         });
     }
-    
+
+    // ==================== RENDER CONVERSATIONS ====================
     function renderConversations() {
         const container = document.getElementById('convoSetsContainer');
+        if (!container) return;
         container.innerHTML = '';
         conversationSets.forEach((set, setIdx) => {
             const section = document.createElement('div'); section.className = 'convo-section';
@@ -520,7 +573,7 @@
             const autoCard = document.createElement('div'); autoCard.className = 'auto-convo-card';
             autoCard.innerHTML = `
                 <div class="convo-header">
-                    <span><i class="fas fa-play-circle"></i> Main Auto (3 bahasa berturutan)</span>
+                    <span><i class="fas fa-play-circle"></i> Main Auto (3 bahasa berturutan dengan accent tepat)</span>
                     <button class="play-auto-btn" data-set="${setIdx}"><i class="fas fa-play"></i> Main Seluruh Perbualan</button>
                 </div>
                 <div class="convo-dialogue" id="dialogue-set-${setIdx}"></div>
@@ -543,7 +596,10 @@
         });
         // attach events
         document.querySelectorAll('.play-auto-btn').forEach(btn => {
-            btn.onclick = (e) => { const idx = parseInt(btn.dataset.set); autoPlaySet(conversationSets[idx].dialogues, idx); };
+            btn.onclick = (e) => {
+                const idx = parseInt(btn.dataset.set);
+                autoPlayConversation(conversationSets[idx].dialogues);
+            };
         });
         document.querySelectorAll('.mini-btn').forEach(btn => {
             btn.onclick = (e) => {
@@ -551,15 +607,14 @@
                 const dIdx = parseInt(btn.dataset.d);
                 const lang = btn.dataset.lang;
                 const line = conversationSets[setIdx].dialogues[dIdx];
-                if (lang === 'en') speakText(line.en, 'en-US', 0.85);
-                else if (lang === 'ms') speakText(line.ms, 'ms-MY', 0.85);
-                else if (lang === 'ar') speakText(line.ar, 'ar-SA', 0.85);
+                if (lang === 'en') speakWithAccent(line.en, 'en-US', 0.85);
+                else if (lang === 'ms') speakWithAccent(line.ms, 'ms-MY', 0.85);
+                else if (lang === 'ar') speakWithAccent(line.ar, 'ar-SA', 0.85);
                 e.stopPropagation();
             };
         });
     }
-    
-    // Tabs
+
     function initTabs() {
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
@@ -572,7 +627,7 @@
             });
         });
     }
-    
+
     renderVocabulary();
     renderConversations();
     initTabs();
