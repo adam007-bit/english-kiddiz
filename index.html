@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinguaPlay | Kids English Learning + Games</title>
+    <title>LinguaPlay | Fun English for Kids</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -13,68 +13,67 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(145deg, #f9eec1 0%, #f4cda6 100%);
+            background: linear-gradient(145deg, #fde8cd 0%, #ffcf9a 100%);
             font-family: 'Quicksand', 'Comic Neue', sans-serif;
-            padding: 1.5rem;
+            padding: 1rem;
             min-height: 100vh;
         }
         .app-container {
             max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 240, 0.95);
+            background: rgba(255, 251, 240, 0.96);
             border-radius: 3rem;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             overflow: hidden;
             backdrop-filter: blur(2px);
         }
+        /* Header with mascot */
         .hero {
-            background: linear-gradient(135deg, #ff9a3c, #d45e1e);
-            padding: 1.5rem;
+            background: linear-gradient(135deg, #ff8c42, #d95b1a);
+            padding: 1.2rem 1.5rem;
             text-align: center;
             color: white;
+            position: relative;
         }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .mascot {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+            display: inline-block;
         }
-        .logo-svg {
-            width: 55px;
-            height: 55px;
-            background: white;
-            border-radius: 1.5rem;
-            padding: 0.5rem;
+        @keyframes bounce {
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(-10px); }
         }
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
         .voice-status {
-            background: #f0a34b;
-            margin-top: 0.8rem;
+            background: #ffc489;
+            margin-top: 0.5rem;
             padding: 0.3rem 1rem;
             border-radius: 2rem;
             font-size: 0.8rem;
             display: inline-block;
             font-weight: bold;
+            color: #5a2a0a;
         }
         .stats-bar {
             background: #fff0d6;
             text-align: center;
             padding: 0.6rem;
             font-weight: bold;
-            color: #b45f2b;
-            border-bottom: 2px solid #ffd966;
+            color: #c45a1a;
+            border-bottom: 3px solid #ffc489;
+            font-size: 1rem;
         }
         .tab-container {
             display: flex;
-            background: #ffe7c4;
-            gap: 0;
-            flex-wrap: wrap;
+            background: #ffe0b5;
+            gap: 0.2rem;
+            padding: 0.5rem 0.5rem 0;
         }
         .tab {
             flex: 1;
@@ -82,21 +81,21 @@
             padding: 0.8rem;
             font-weight: 800;
             cursor: pointer;
-            background: #fff0e0;
+            background: #fff3e0;
             border: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: 0.2s;
-            color: #6b3a1a;
+            color: #7b3f12;
             border-radius: 2rem 2rem 0 0;
         }
         .tab.active {
             background: white;
-            color: #d45e1e;
-            border-bottom: 3px solid #ff9a3c;
+            color: #e06e1a;
+            border-bottom: 4px solid #ff9a3c;
         }
         .tab-content {
             display: none;
-            padding: 2rem;
+            padding: 1.5rem;
             animation: fadeIn 0.3s ease;
         }
         .tab-content.active {
@@ -109,22 +108,23 @@
         /* Vocabulary Grid */
         .vocab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
         }
         .card {
             background: white;
             border-radius: 2rem;
-            padding: 1rem;
+            padding: 0.8rem;
             text-align: center;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             transition: transform 0.2s;
+            cursor: pointer;
         }
-        .card:hover { transform: scale(1.02); }
+        .card:hover { transform: scale(1.02); background: #fff9ef; }
         .emoji-box {
             background: #fff1e0;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -133,21 +133,14 @@
             font-size: 3rem;
         }
         .eng-word {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             background: #ffefd0;
             display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 3rem;
-            margin: 0.5rem 0;
-            color: #b45f2b;
-        }
-        .syllable {
-            background: #e9f0e6;
-            font-size: 0.75rem;
             padding: 0.2rem 0.8rem;
             border-radius: 2rem;
-            display: inline-block;
+            margin: 0.5rem 0;
+            color: #b45f2b;
         }
         .audio-btn {
             border: none;
@@ -155,8 +148,9 @@
             border-radius: 2rem;
             font-weight: bold;
             background: #ffc857;
-            margin: 5px;
+            margin: 4px;
             cursor: pointer;
+            font-size: 0.8rem;
         }
         /* Conversation */
         .convo-card {
@@ -167,7 +161,7 @@
             box-shadow: 0 5px 10px rgba(0,0,0,0.05);
         }
         .convo-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 800;
             background: #ffdd99;
             padding: 0.5rem;
@@ -193,18 +187,19 @@
             margin-left: 1rem;
             cursor: pointer;
         }
-        /* Games section */
+        /* Games */
         .games-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .game-card {
             background: white;
             border-radius: 2rem;
             padding: 1.2rem;
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
             text-align: center;
+            transition: all 0.2s;
         }
         .game-card h3 {
             background: #ff9a3c;
@@ -213,6 +208,7 @@
             border-radius: 3rem;
             color: white;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
         .game-question {
             font-size: 3rem;
@@ -227,24 +223,27 @@
         }
         .game-option {
             background: #f0e6d2;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 3rem;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
             transition: 0.1s;
         }
-        .game-option:hover { background: #ffd966; }
+        .game-option:hover { background: #ffd966; transform: scale(1.02); }
         .game-input {
-            padding: 0.5rem;
+            padding: 0.7rem;
             border-radius: 2rem;
             border: 2px solid #ffb347;
             width: 80%;
             text-align: center;
             font-size: 1rem;
+            font-family: inherit;
         }
         .game-feedback {
             margin: 0.8rem 0;
             font-weight: bold;
+            font-size: 1rem;
         }
         .game-score {
             background: #2e7d5e;
@@ -255,6 +254,11 @@
         }
         button {
             cursor: pointer;
+            font-family: inherit;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
         }
         footer {
             text-align: center;
@@ -262,31 +266,34 @@
             background: #ffe6c7;
             font-size: 0.8rem;
         }
+        /* Animations for correct answers */
+        .correct-pop {
+            animation: pop 0.3s ease;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); background: #c8e6d9; }
+            100% { transform: scale(1); }
+        }
         @media (max-width: 700px) {
-            .hero h1 { font-size: 1.5rem; }
-            .tab { font-size: 0.8rem; }
-            .games-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.6rem; }
+            .tab { font-size: 0.9rem; }
+            .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
         }
     </style>
 </head>
 <body>
 <div class="app-container">
     <div class="hero">
-        <div class="logo-area">
-            <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
-                <rect width="100" height="100" rx="20" fill="#FFF2DF" />
-                <circle cx="50" cy="50" r="30" fill="#FF9A3C" />
-                <text x="50" y="65" text-anchor="middle" font-size="28" fill="white" font-weight="bold">EN</text>
-            </svg>
-            <h1><i class="fas fa-child"></i> LinguaPlay</h1>
-        </div>
-        <div class="voice-status" id="voiceStatus">🎧 Loading best English voice...</div>
+        <div class="mascot">🦊✨</div>
+        <h1><i class="fas fa-smile-wink"></i> LinguaPlay</h1>
+        <div class="voice-status" id="voiceStatus">🎤 Getting your English voice ready...</div>
     </div>
     <div class="stats-bar">
-        🌟 Learn English with fun! Vocabulary + Conversations + Games 🌟
+        🌟 Learn English with fun! Words, Conversations, and Games 🌟
     </div>
     <div class="tab-container">
-        <button class="tab active" data-tab="vocab">📚 Words (60)</button>
+        <button class="tab active" data-tab="vocab">📚 Words</button>
         <button class="tab" data-tab="convo">💬 Talk Time</button>
         <button class="tab" data-tab="games">🎮 Play & Learn</button>
     </div>
@@ -302,105 +309,75 @@
     <div id="games" class="tab-content">
         <div class="games-container">
             <!-- Game 1: Match the Picture -->
-            <div class="game-card" id="matchGame">
-                <h3><i class="fas fa-puzzle-piece"></i> Match the Picture</h3>
+            <div class="game-card">
+                <h3>🧩 Match the Picture</h3>
                 <div class="game-question" id="matchEmoji">🐶</div>
                 <div class="game-options" id="matchOptions"></div>
                 <div class="game-feedback" id="matchFeedback"></div>
                 <div class="game-score" id="matchScore">Score: 0</div>
-                <button id="nextMatchBtn" style="margin-top: 10px; background:#ffb347; border:none; border-radius:2rem; padding:5px 15px;">Next Word →</button>
+                <button id="nextMatchBtn" style="background:#ffb347; margin-top:8px;">➡️ Next Word</button>
             </div>
             <!-- Game 2: Spelling Challenge -->
-            <div class="game-card" id="spellingGame">
-                <h3><i class="fas fa-pencil-alt"></i> Spelling Challenge</h3>
+            <div class="game-card">
+                <h3>✏️ Spelling Challenge</h3>
                 <div class="game-question" id="spellEmoji">🐱</div>
                 <input type="text" id="spellInput" class="game-input" placeholder="Type the word...">
-                <button id="checkSpellBtn" style="background:#4caf50; margin-top:10px;">Check</button>
+                <button id="checkSpellBtn" style="background:#4caf50; margin-top:10px;">✔️ Check</button>
                 <div class="game-feedback" id="spellFeedback"></div>
                 <div class="game-score" id="spellScore">Score: 0</div>
-                <button id="nextSpellBtn" style="margin-top:5px; background:#ffb347;">New Word</button>
+                <button id="nextSpellBtn" style="background:#ffb347;">🔄 New Word</button>
             </div>
             <!-- Game 3: Listening Quiz -->
-            <div class="game-card" id="listenGame">
-                <h3><i class="fas fa-headphones"></i> Listening Quiz</h3>
-                <div class="game-question"><i class="fas fa-volume-up" style="font-size:2rem;"></i> What word do you hear?</div>
-                <button id="playListenBtn" style="background:#6c5ce7; color:white; padding:6px 15px; border-radius:2rem; margin:10px;">🔊 Play Sound</button>
+            <div class="game-card">
+                <h3>🎧 Listening Quiz</h3>
+                <div class="game-question"><i class="fas fa-volume-up" style="font-size:2rem;"></i></div>
+                <button id="playListenBtn" style="background:#6c5ce7; color:white; padding:8px 20px;">🔊 Play Sound</button>
                 <div class="game-options" id="listenOptions"></div>
                 <div class="game-feedback" id="listenFeedback"></div>
                 <div class="game-score" id="listenScore">Score: 0</div>
-                <button id="nextListenBtn" style="margin-top:8px;">Next Question</button>
+                <button id="nextListenBtn" style="background:#ffb347;">🎲 Next Question</button>
             </div>
         </div>
     </div>
-    <footer>🎈 Click any speaker button to hear the word! Games help you learn faster. Have fun!</footer>
+    <footer>💖 Tap any speaker button to hear the word. Have fun learning English! 💖</footer>
 </div>
 
 <script>
-    // -------------------- 60 ENGLISH VOCABULARY (simplified, kid-friendly) --------------------
+    // ==================== 60 KID-FRIENDLY WORDS ====================
     const vocabulary = [
-        { emoji: "📖", word: "book", syllables: ["book"] },
-        { emoji: "🍎", word: "apple", syllables: ["ap","ple"] },
-        { emoji: "🐱", word: "cat", syllables: ["cat"] },
-        { emoji: "🐶", word: "dog", syllables: ["dog"] },
-        { emoji: "☀️", word: "sun", syllables: ["sun"] },
-        { emoji: "🚗", word: "car", syllables: ["car"] },
-        { emoji: "🏠", word: "house", syllables: ["house"] },
-        { emoji: "🌸", word: "flower", syllables: ["flow","er"] },
-        { emoji: "🌳", word: "tree", syllables: ["tree"] },
-        { emoji: "🐦", word: "bird", syllables: ["bird"] },
-        { emoji: "🐟", word: "fish", syllables: ["fish"] },
-        { emoji: "⚽", word: "ball", syllables: ["ball"] },
-        { emoji: "🌙", word: "moon", syllables: ["moon"] },
-        { emoji: "⭐", word: "star", syllables: ["star"] },
-        { emoji: "🍌", word: "banana", syllables: ["ba","na","na"] },
-        { emoji: "🐘", word: "elephant", syllables: ["el","e","phant"] },
-        { emoji: "🦁", word: "lion", syllables: ["li","on"] },
-        { emoji: "🦆", word: "duck", syllables: ["duck"] },
-        { emoji: "👟", word: "shoe", syllables: ["shoe"] },
-        { emoji: "🧢", word: "hat", syllables: ["hat"] },
-        { emoji: "🐄", word: "cow", syllables: ["cow"] },
-        { emoji: "🐒", word: "monkey", syllables: ["mon","key"] },
-        { emoji: "🍓", word: "strawberry", syllables: ["straw","ber","ry"] },
-        { emoji: "🚲", word: "bicycle", syllables: ["bi","cy","cle"] },
-        { emoji: "✈️", word: "airplane", syllables: ["air","plane"] },
-        { emoji: "⏰", word: "clock", syllables: ["clock"] },
-        { emoji: "🍕", word: "pizza", syllables: ["piz","za"] },
-        { emoji: "🐸", word: "frog", syllables: ["frog"] },
-        { emoji: "🐝", word: "bee", syllables: ["bee"] },
-        { emoji: "🌽", word: "corn", syllables: ["corn"] },
-        { emoji: "✏️", word: "pen", syllables: ["pen"] },
-        { emoji: "🪑", word: "chair", syllables: ["chair"] },
-        { emoji: "📊", word: "table", syllables: ["ta","ble"] },
-        { emoji: "🚪", word: "door", syllables: ["door"] },
-        { emoji: "🚌", word: "bus", syllables: ["bus"] },
-        { emoji: "🐔", word: "chicken", syllables: ["chick","en"] },
-        { emoji: "🍞", word: "bread", syllables: ["bread"] },
-        { emoji: "🥛", word: "milk", syllables: ["milk"] },
-        { emoji: "🧸", word: "teddy bear", syllables: ["ted","dy","bear"] },
-        { emoji: "🎈", word: "balloon", syllables: ["bal","loon"] },
-        { emoji: "🖍️", word: "crayon", syllables: ["cray","on"] },
-        { emoji: "📏", word: "ruler", syllables: ["rul","er"] },
-        { emoji: "🖌️", word: "paintbrush", syllables: ["paint","brush"] },
-        { emoji: "🪁", word: "kite", syllables: ["kite"] },
-        { emoji: "🍪", word: "cookie", syllables: ["cook","ie"] },
-        { emoji: "🍦", word: "ice cream", syllables: ["ice","cream"] },
-        { emoji: "🥕", word: "carrot", syllables: ["car","rot"] },
-        { emoji: "🍅", word: "tomato", syllables: ["to","ma","to"] },
-        { emoji: "🧀", word: "cheese", syllables: ["cheese"] },
-        { emoji: "🍔", word: "hamburger", syllables: ["ham","bur","ger"] },
-        { emoji: "🥑", word: "avocado", syllables: ["a","vo","ca","do"] },
-        { emoji: "🥥", word: "coconut", syllables: ["co","co","nut"] },
-        { emoji: "🧅", word: "onion", syllables: ["on","ion"] },
-        { emoji: "🥔", word: "potato", syllables: ["po","ta","to"] },
-        { emoji: "🦷", word: "tooth", syllables: ["tooth"] },
-        { emoji: "🫀", word: "heart", syllables: ["heart"] },
-        { emoji: "🧠", word: "brain", syllables: ["brain"] },
-        { emoji: "👁️", word: "eye", syllables: ["eye"] },
-        { emoji: "👂", word: "ear", syllables: ["ear"] },
-        { emoji: "🤚", word: "hand", syllables: ["hand"] }
+        { emoji: "📖", word: "book", syllables: ["book"] }, { emoji: "🍎", word: "apple", syllables: ["ap","ple"] },
+        { emoji: "🐱", word: "cat", syllables: ["cat"] }, { emoji: "🐶", word: "dog", syllables: ["dog"] },
+        { emoji: "☀️", word: "sun", syllables: ["sun"] }, { emoji: "🚗", word: "car", syllables: ["car"] },
+        { emoji: "🏠", word: "house", syllables: ["house"] }, { emoji: "🌸", word: "flower", syllables: ["flow","er"] },
+        { emoji: "🌳", word: "tree", syllables: ["tree"] }, { emoji: "🐦", word: "bird", syllables: ["bird"] },
+        { emoji: "🐟", word: "fish", syllables: ["fish"] }, { emoji: "⚽", word: "ball", syllables: ["ball"] },
+        { emoji: "🌙", word: "moon", syllables: ["moon"] }, { emoji: "⭐", word: "star", syllables: ["star"] },
+        { emoji: "🍌", word: "banana", syllables: ["ba","na","na"] }, { emoji: "🐘", word: "elephant", syllables: ["el","e","phant"] },
+        { emoji: "🦁", word: "lion", syllables: ["li","on"] }, { emoji: "🦆", word: "duck", syllables: ["duck"] },
+        { emoji: "👟", word: "shoe", syllables: ["shoe"] }, { emoji: "🧢", word: "hat", syllables: ["hat"] },
+        { emoji: "🐄", word: "cow", syllables: ["cow"] }, { emoji: "🐒", word: "monkey", syllables: ["mon","key"] },
+        { emoji: "🍓", word: "strawberry", syllables: ["straw","ber","ry"] }, { emoji: "🚲", word: "bicycle", syllables: ["bi","cy","cle"] },
+        { emoji: "✈️", word: "airplane", syllables: ["air","plane"] }, { emoji: "⏰", word: "clock", syllables: ["clock"] },
+        { emoji: "🍕", word: "pizza", syllables: ["piz","za"] }, { emoji: "🐸", word: "frog", syllables: ["frog"] },
+        { emoji: "🐝", word: "bee", syllables: ["bee"] }, { emoji: "🌽", word: "corn", syllables: ["corn"] },
+        { emoji: "✏️", word: "pen", syllables: ["pen"] }, { emoji: "🪑", word: "chair", syllables: ["chair"] },
+        { emoji: "📊", word: "table", syllables: ["ta","ble"] }, { emoji: "🚪", word: "door", syllables: ["door"] },
+        { emoji: "🚌", word: "bus", syllables: ["bus"] }, { emoji: "🐔", word: "chicken", syllables: ["chick","en"] },
+        { emoji: "🍞", word: "bread", syllables: ["bread"] }, { emoji: "🥛", word: "milk", syllables: ["milk"] },
+        { emoji: "🧸", word: "teddy bear", syllables: ["ted","dy","bear"] }, { emoji: "🎈", word: "balloon", syllables: ["bal","loon"] },
+        { emoji: "🖍️", word: "crayon", syllables: ["cray","on"] }, { emoji: "📏", word: "ruler", syllables: ["rul","er"] },
+        { emoji: "🖌️", word: "paintbrush", syllables: ["paint","brush"] }, { emoji: "🪁", word: "kite", syllables: ["kite"] },
+        { emoji: "🍪", word: "cookie", syllables: ["cook","ie"] }, { emoji: "🍦", word: "ice cream", syllables: ["ice","cream"] },
+        { emoji: "🥕", word: "carrot", syllables: ["car","rot"] }, { emoji: "🍅", word: "tomato", syllables: ["to","ma","to"] },
+        { emoji: "🧀", word: "cheese", syllables: ["cheese"] }, { emoji: "🍔", word: "hamburger", syllables: ["ham","bur","ger"] },
+        { emoji: "🥑", word: "avocado", syllables: ["a","vo","ca","do"] }, { emoji: "🥥", word: "coconut", syllables: ["co","co","nut"] },
+        { emoji: "🧅", word: "onion", syllables: ["on","ion"] }, { emoji: "🥔", word: "potato", syllables: ["po","ta","to"] },
+        { emoji: "🦷", word: "tooth", syllables: ["tooth"] }, { emoji: "🫀", word: "heart", syllables: ["heart"] },
+        { emoji: "🧠", word: "brain", syllables: ["brain"] }, { emoji: "👁️", word: "eye", syllables: ["eye"] },
+        { emoji: "👂", word: "ear", syllables: ["ear"] }, { emoji: "🤚", word: "hand", syllables: ["hand"] }
     ];
 
-    // -------------------- CONVERSATIONS (English only) --------------------
+    // ==================== CONVERSATIONS ====================
     const conversations = [
         { title: "👋 Daily Greetings", lines: ["Good morning!", "How are you?", "I am fine, thank you.", "Nice to meet you!", "Goodbye!"] },
         { title: "🛒 At the Market", lines: ["How much is this?", "I would like an apple.", "That is too expensive.", "Here is your change.", "Thank you, have a nice day!"] },
@@ -408,7 +385,7 @@
         { title: "👪 Family Fun", lines: ["This is my mother.", "I love my dad.", "Do you have a brother?", "Let's eat dinner.", "Good night, family!"] }
     ];
 
-    // ==================== VOICE & SPEECH ====================
+    // ==================== VOICE (US ENGLISH) ====================
     let selectedVoice = null;
     let voiceRetry = 0;
     function getBestEnglishVoice() {
@@ -424,7 +401,7 @@
         const statusDiv = document.getElementById('voiceStatus');
         if (statusDiv) {
             let vName = selectedVoice ? selectedVoice.name : 'Default English';
-            statusDiv.innerHTML = `🎤 Voice ready: ${vName}`;
+            statusDiv.innerHTML = `🎤 Ready! Speaking: ${vName}`;
         }
     }
     function ensureVoices() {
@@ -435,7 +412,7 @@
     }
     if (window.speechSynthesis) {
         window.speechSynthesis.getVoices();
-        if (window.speechSynthesis.onvoiceschanged) window.speechSynthesis.onvoiceschanged = ensureVoices;
+        if (window.speechSynthesis.onvoiceschanged !== undefined) window.speechSynthesis.onvoiceschanged = ensureVoices;
         ensureVoices();
     }
 
@@ -477,14 +454,11 @@
             card.innerHTML = `
                 <div class="emoji-box">${v.emoji}</div>
                 <div class="eng-word">${v.word}</div>
-                <div class="syllable">🔊 ${v.syllables.join('·')}</div>
-                <div><button class="audio-btn" data-word="${v.word}">🔊 Say Word</button>
+                <div><button class="audio-btn" data-word="${v.word}">🔊 Say it</button>
                 <button class="audio-btn" data-syllables='${JSON.stringify(v.syllables)}'>🔊 Syllables</button></div>
             `;
-            const wordBtn = card.querySelector('[data-word]');
-            wordBtn.onclick = () => speakWord(v.word);
-            const syllBtn = card.querySelector('[data-syllables]');
-            syllBtn.onclick = () => speakSyllables(v.syllables);
+            card.querySelector('[data-word]').onclick = () => speakWord(v.word);
+            card.querySelector('[data-syllables]').onclick = () => speakSyllables(v.syllables);
             container.appendChild(card);
         });
     }
@@ -495,7 +469,7 @@
         container.innerHTML = '';
         conversations.forEach(conv => {
             const div = document.createElement('div'); div.className = 'convo-card';
-            div.innerHTML = `<div class="convo-title">${conv.title} <button class="play-all-btn" data-lines='${JSON.stringify(conv.lines)}'>🔊 Play All</button></div>`;
+            div.innerHTML = `<div class="convo-title">${conv.title} <button class="play-all-btn" data-lines='${JSON.stringify(conv.lines)}'>▶️ Play All</button></div>`;
             const linesDiv = document.createElement('div');
             conv.lines.forEach(line => {
                 const lineDiv = document.createElement('div'); lineDiv.className = 'convo-line';
@@ -520,136 +494,116 @@
     }
 
     // ==================== GAMES ====================
-    // Helper: get random vocab items for games
     let gameWords = [...vocabulary];
-    function getRandomWordItem() {
+    function getRandomWord() {
         return gameWords[Math.floor(Math.random() * gameWords.length)];
     }
 
-    // ----- Game 1: Match Picture (multiple choice) -----
-    let matchCurrentItem = null;
-    let matchScore = 0;
+    // --- Game 1: Match Picture ---
+    let matchCurrent = null, matchScore = 0;
     function refreshMatchGame() {
-        matchCurrentItem = getRandomWordItem();
-        document.getElementById('matchEmoji').innerHTML = matchCurrentItem.emoji;
-        // generate 3 random wrong options + correct
-        let options = new Set();
-        options.add(matchCurrentItem.word);
-        while (options.size < 4) {
-            const randomWord = gameWords[Math.floor(Math.random() * gameWords.length)].word;
-            options.add(randomWord);
-        }
-        let optsArray = Array.from(options);
-        optsArray.sort(() => Math.random() - 0.5);
+        matchCurrent = getRandomWord();
+        document.getElementById('matchEmoji').innerHTML = matchCurrent.emoji;
+        let options = new Set([matchCurrent.word]);
+        while (options.size < 4) options.add(gameWords[Math.floor(Math.random() * gameWords.length)].word);
+        let optsArray = Array.from(options).sort(() => Math.random() - 0.5);
         const container = document.getElementById('matchOptions');
         container.innerHTML = '';
         optsArray.forEach(opt => {
             const btn = document.createElement('div'); btn.className = 'game-option';
             btn.innerText = opt;
             btn.onclick = () => {
-                if (opt === matchCurrentItem.word) {
+                if (opt === matchCurrent.word) {
                     matchScore++;
-                    document.getElementById('matchFeedback').innerHTML = '✅ Correct! +1 point';
+                    document.getElementById('matchFeedback').innerHTML = '✅ Correct! +1 🎉';
                     document.getElementById('matchFeedback').style.color = 'green';
+                    document.getElementById('matchScore').innerText = `Score: ${matchScore}`;
+                    animateCorrect(btn);
                 } else {
-                    document.getElementById('matchFeedback').innerHTML = `❌ Oops! Correct answer: ${matchCurrentItem.word}`;
+                    document.getElementById('matchFeedback').innerHTML = `❌ Oops! It was "${matchCurrent.word}".`;
                     document.getElementById('matchFeedback').style.color = 'red';
                 }
-                document.getElementById('matchScore').innerText = `Score: ${matchScore}`;
-                // disable options temporarily
                 document.querySelectorAll('#matchOptions .game-option').forEach(b => b.style.pointerEvents = 'none');
-                setTimeout(() => {
-                    refreshMatchGame();
-                    document.querySelectorAll('#matchOptions .game-option').forEach(b => b.style.pointerEvents = 'auto');
-                    document.getElementById('matchFeedback').innerHTML = '';
-                }, 1500);
+                setTimeout(() => { refreshMatchGame(); document.querySelectorAll('#matchOptions .game-option').forEach(b => b.style.pointerEvents = 'auto'); document.getElementById('matchFeedback').innerHTML = ''; }, 1200);
             };
             container.appendChild(btn);
         });
     }
     document.getElementById('nextMatchBtn').onclick = () => refreshMatchGame();
 
-    // ----- Game 2: Spelling Challenge -----
-    let spellCurrentItem = null;
-    let spellScore = 0;
-    function refreshSpellingGame() {
-        spellCurrentItem = getRandomWordItem();
-        document.getElementById('spellEmoji').innerHTML = spellCurrentItem.emoji;
+    // --- Game 2: Spelling ---
+    let spellCurrent = null, spellScore = 0;
+    function refreshSpelling() {
+        spellCurrent = getRandomWord();
+        document.getElementById('spellEmoji').innerHTML = spellCurrent.emoji;
         document.getElementById('spellInput').value = '';
         document.getElementById('spellFeedback').innerHTML = '';
     }
     function checkSpelling() {
-        const userAnswer = document.getElementById('spellInput').value.trim().toLowerCase();
-        if (userAnswer === spellCurrentItem.word.toLowerCase()) {
+        const user = document.getElementById('spellInput').value.trim().toLowerCase();
+        if (user === spellCurrent.word.toLowerCase()) {
             spellScore++;
-            document.getElementById('spellFeedback').innerHTML = '🎉 Correct! Great spelling!';
+            document.getElementById('spellFeedback').innerHTML = '🎉 Perfect! +1 point';
             document.getElementById('spellFeedback').style.color = 'green';
+            animateCorrect(document.getElementById('checkSpellBtn'));
         } else {
-            document.getElementById('spellFeedback').innerHTML = `😢 Wrong! The correct spelling is "${spellCurrentItem.word}".`;
+            document.getElementById('spellFeedback').innerHTML = `😢 Correct spelling: "${spellCurrent.word}"`;
             document.getElementById('spellFeedback').style.color = 'red';
         }
         document.getElementById('spellScore').innerText = `Score: ${spellScore}`;
-        setTimeout(() => { refreshSpellingGame(); }, 2000);
+        setTimeout(() => refreshSpelling(), 1500);
     }
     document.getElementById('checkSpellBtn').onclick = checkSpelling;
-    document.getElementById('nextSpellBtn').onclick = () => refreshSpellingGame();
+    document.getElementById('nextSpellBtn').onclick = () => refreshSpelling();
 
-    // ----- Game 3: Listening Quiz -----
-    let listenCurrentItem = null;
-    let listenScore = 0;
-    function refreshListeningGame() {
-        listenCurrentItem = getRandomWordItem();
-        // generate 3 wrong options
-        let options = new Set();
-        options.add(listenCurrentItem.word);
-        while (options.size < 4) {
-            const randomWord = gameWords[Math.floor(Math.random() * gameWords.length)].word;
-            options.add(randomWord);
-        }
-        let optsArray = Array.from(options);
-        optsArray.sort(() => Math.random() - 0.5);
+    // --- Game 3: Listening ---
+    let listenCurrent = null, listenScore = 0;
+    function refreshListening() {
+        listenCurrent = getRandomWord();
+        let options = new Set([listenCurrent.word]);
+        while (options.size < 4) options.add(gameWords[Math.floor(Math.random() * gameWords.length)].word);
+        let optsArray = Array.from(options).sort(() => Math.random() - 0.5);
         const container = document.getElementById('listenOptions');
         container.innerHTML = '';
         optsArray.forEach(opt => {
             const btn = document.createElement('div'); btn.className = 'game-option';
             btn.innerText = opt;
             btn.onclick = () => {
-                if (opt === listenCurrentItem.word) {
+                if (opt === listenCurrent.word) {
                     listenScore++;
-                    document.getElementById('listenFeedback').innerHTML = '✅ Perfect! +1 point';
+                    document.getElementById('listenFeedback').innerHTML = '✅ Great ear! +1';
                     document.getElementById('listenFeedback').style.color = 'green';
+                    document.getElementById('listenScore').innerText = `Score: ${listenScore}`;
+                    animateCorrect(btn);
                 } else {
-                    document.getElementById('listenFeedback').innerHTML = `❌ The word was "${listenCurrentItem.word}". Try again!`;
+                    document.getElementById('listenFeedback').innerHTML = `❌ The word was "${listenCurrent.word}".`;
                     document.getElementById('listenFeedback').style.color = 'red';
                 }
-                document.getElementById('listenScore').innerText = `Score: ${listenScore}`;
                 document.querySelectorAll('#listenOptions .game-option').forEach(b => b.style.pointerEvents = 'none');
-                setTimeout(() => {
-                    refreshListeningGame();
-                    document.querySelectorAll('#listenOptions .game-option').forEach(b => b.style.pointerEvents = 'auto');
-                    document.getElementById('listenFeedback').innerHTML = '';
-                }, 1500);
+                setTimeout(() => { refreshListening(); document.querySelectorAll('#listenOptions .game-option').forEach(b => b.style.pointerEvents = 'auto'); document.getElementById('listenFeedback').innerHTML = ''; }, 1200);
             };
             container.appendChild(btn);
         });
     }
-    document.getElementById('playListenBtn').onclick = () => {
-        if (listenCurrentItem) speakWord(listenCurrentItem.word);
-    };
-    document.getElementById('nextListenBtn').onclick = () => refreshListeningGame();
+    document.getElementById('playListenBtn').onclick = () => { if (listenCurrent) speakWord(listenCurrent.word); };
+    document.getElementById('nextListenBtn').onclick = () => refreshListening();
 
-    // Initialize all
+    function animateCorrect(element) {
+        element.style.transform = 'scale(1.1)';
+        setTimeout(() => { element.style.transform = 'scale(1)'; }, 200);
+    }
+
+    // ==================== INITIALIZE ====================
     function initGames() {
-        refreshMatchGame();
-        refreshSpellingGame();
-        refreshListeningGame();
         matchScore = 0; spellScore = 0; listenScore = 0;
         document.getElementById('matchScore').innerText = 'Score: 0';
         document.getElementById('spellScore').innerText = 'Score: 0';
         document.getElementById('listenScore').innerText = 'Score: 0';
+        refreshMatchGame();
+        refreshSpelling();
+        refreshListening();
     }
 
-    // Tabs
     function initTabs() {
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
