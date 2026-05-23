@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>LinguaPlay | Fun English Games for Kids</title>
+    <title>LinguaPlay | English Words + Sentences + Games for Kids</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -82,6 +82,7 @@
             background: #ffe0b5;
             gap: 0.2rem;
             padding: 0.5rem 0.5rem 0;
+            flex-wrap: wrap;
         }
         .tab {
             flex: 1;
@@ -91,7 +92,7 @@
             cursor: pointer;
             background: #fff3e0;
             border: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: 0.2s;
             color: #7b3f12;
             border-radius: 2rem 2rem 0 0;
@@ -160,15 +161,15 @@
             cursor: pointer;
             font-size: 0.7rem;
         }
-        /* Conversation */
-        .convo-card {
+        /* Conversation & Sentences */
+        .convo-card, .sentence-card {
             background: #fffaf0;
             border-radius: 2rem;
             margin-bottom: 1.5rem;
             padding: 0.8rem;
             box-shadow: 0 5px 10px rgba(0,0,0,0.05);
         }
-        .convo-title {
+        .convo-title, .sentence-title {
             font-size: 1.3rem;
             font-weight: 800;
             background: #ffdd99;
@@ -177,7 +178,7 @@
             text-align: center;
             margin-bottom: 0.8rem;
         }
-        .convo-line {
+        .convo-line, .sentence-line {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -195,7 +196,7 @@
             margin-left: 1rem;
             cursor: pointer;
         }
-        /* Games Section - Enhanced */
+        /* Games Section */
         .games-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -210,10 +211,6 @@
             transition: all 0.2s;
             border: 2px solid #ffd966;
         }
-        .game-card:hover {
-            transform: scale(1.01);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.25);
-        }
         .game-title {
             background: #ff9a3c;
             display: inline-block;
@@ -222,7 +219,6 @@
             color: white;
             margin-bottom: 1rem;
             font-size: 1.3rem;
-            box-shadow: 0 4px 0 #b45a1a;
         }
         .game-question {
             font-size: 3rem;
@@ -245,7 +241,6 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 1rem;
-            transition: 0.1s;
             border: 2px solid #ffb347;
         }
         .game-option:hover { background: #ffd966; transform: scale(1.02); }
@@ -286,7 +281,6 @@
             background: #4caf50;
             color: white;
         }
-        /* Confetti canvas */
         #confettiCanvas {
             position: fixed;
             top: 0;
@@ -304,7 +298,7 @@
         }
         @media (max-width: 750px) {
             .hero h1 { font-size: 1.5rem; }
-            .tab { font-size: 0.8rem; }
+            .tab { font-size: 0.7rem; }
             .games-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -313,24 +307,26 @@
 <canvas id="confettiCanvas"></canvas>
 <div class="app-container">
     <div class="hero">
-        <div class="mascot">🦊🎮✨</div>
-        <h1><i class="fas fa-gamepad"></i> LinguaPlay</h1>
+        <div class="mascot">🦊📚✨</div>
+        <h1><i class="fas fa-graduation-cap"></i> LinguaPlay</h1>
         <div class="voice-status" id="voiceStatus">🎤 Loading English voice...</div>
     </div>
     <div class="stats-bar">
-        <span>🌟 Learn English with Games!</span>
+        <span>🌟 Learn Words + Sentences + Games!</span>
         <span class="total-score" id="totalScore">🏆 Total Points: 0</span>
     </div>
     <div class="tab-container">
         <button class="tab active" data-tab="vocab">📚 Words</button>
+        <button class="tab" data-tab="sentences">📝 Sentences</button>
         <button class="tab" data-tab="convo">💬 Talk</button>
         <button class="tab" data-tab="games">🎮 Games</button>
     </div>
 
     <div id="vocab" class="tab-content active"><div id="vocabGrid" class="vocab-grid"></div></div>
+    <div id="sentences" class="tab-content"><div id="sentencesContainer"></div></div>
     <div id="convo" class="tab-content"><div id="convoContainer"></div></div>
     <div id="games" class="tab-content"><div id="gamesContainer"></div></div>
-    <footer>🎧 Tap any speaker button to hear the word. Play games, earn points, and have fun!</footer>
+    <footer>🎧 Tap any speaker button to hear the word or sentence. Play games and earn points!</footer>
 </div>
 
 <script>
@@ -366,6 +362,16 @@
         { emoji: "🦷", word: "tooth", syllables: ["tooth"] }, { emoji: "🫀", word: "heart", syllables: ["heart"] },
         { emoji: "🧠", word: "brain", syllables: ["brain"] }, { emoji: "👁️", word: "eye", syllables: ["eye"] },
         { emoji: "👂", word: "ear", syllables: ["ear"] }, { emoji: "🤚", word: "hand", syllables: ["hand"] }
+    ];
+
+    // ==================== SENTENCES (combining vocabulary for kids) ====================
+    const sentenceSets = [
+        { title: "🐱 Animals", sentences: ["I see a cat.", "The dog is big.", "The bird can fly.", "Look at the fish!", "I like my pet duck."] },
+        { title: "🍎 Food & Fruit", sentences: ["I eat an apple.", "The banana is yellow.", "Do you like pizza?", "I want a cookie.", "Milk is good for you."] },
+        { title: "🏠 At Home", sentences: ["This is my house.", "I sit on the chair.", "Open the door, please.", "I read a book.", "My bed is soft."] },
+        { title: "☀️ Outside", sentences: ["The sun is hot.", "I see a big tree.", "Let's ride a bicycle!", "The car is red.", "I like to play ball."] },
+        { title: "🎒 School", sentences: ["I have a pen.", "The teacher is nice.", "I write with a pencil.", "My backpack is heavy.", "Let's read together."] },
+        { title: "😊 Feelings & Actions", sentences: ["I am happy.", "She is my friend.", "We run fast.", "I love my family.", "Good night, everyone!"] }
     ];
 
     // ==================== CONVERSATIONS ====================
@@ -409,15 +415,16 @@
         if (window.speechSynthesis) window.speechSynthesis.cancel();
         if (autoTimeout) clearTimeout(autoTimeout);
     }
-    function speakWord(word) {
+    function speakText(text) {
         stopAllSpeech();
         if (!window.speechSynthesis) return;
-        let utter = new SpeechSynthesisUtterance(word);
+        let utter = new SpeechSynthesisUtterance(text);
         utter.lang = 'en-US';
-        utter.rate = 0.8;
+        utter.rate = 0.85;
         if (selectedVoice) utter.voice = selectedVoice;
         window.speechSynthesis.speak(utter);
     }
+    function speakWord(word) { speakText(word); }
     function speakSyllables(syllables) {
         stopAllSpeech();
         let idx = 0;
@@ -433,7 +440,7 @@
         next();
     }
 
-    // ==================== RENDER VOCAB & CONVO ====================
+    // ==================== RENDER VOCABULARY ====================
     function renderVocabulary() {
         let container = document.getElementById('vocabGrid');
         container.innerHTML = '';
@@ -447,6 +454,38 @@
             container.appendChild(card);
         });
     }
+
+    // ==================== RENDER SENTENCES ====================
+    function renderSentences() {
+        let container = document.getElementById('sentencesContainer');
+        container.innerHTML = '';
+        sentenceSets.forEach(set => {
+            let div = document.createElement('div'); div.className = 'sentence-card';
+            div.innerHTML = `<div class="sentence-title">${set.title} <button class="play-all-btn" data-sentences='${JSON.stringify(set.sentences)}'>🔊 Play All</button></div>`;
+            let linesDiv = document.createElement('div');
+            set.sentences.forEach(sentence => {
+                let lineDiv = document.createElement('div'); lineDiv.className = 'sentence-line';
+                lineDiv.innerHTML = `<span>${sentence}</span><button class="audio-btn speak-line">🔊 Speak</button>`;
+                lineDiv.querySelector('.speak-line').onclick = () => speakText(sentence);
+                linesDiv.appendChild(lineDiv);
+            });
+            div.appendChild(linesDiv);
+            container.appendChild(div);
+            div.querySelector('.play-all-btn').onclick = (e) => {
+                let sentences = JSON.parse(e.target.dataset.sentences);
+                let idx = 0;
+                function playNext() {
+                    if (idx >= sentences.length) return;
+                    speakText(sentences[idx]);
+                    autoTimeout = setTimeout(() => { idx++; playNext(); }, 2000);
+                }
+                stopAllSpeech();
+                playNext();
+            };
+        });
+    }
+
+    // ==================== RENDER CONVERSATIONS ====================
     function renderConversations() {
         let container = document.getElementById('convoContainer');
         container.innerHTML = '';
@@ -457,7 +496,7 @@
             conv.lines.forEach(line => {
                 let lineDiv = document.createElement('div'); lineDiv.className = 'convo-line';
                 lineDiv.innerHTML = `<span>${line}</span><button class="audio-btn speak-line">🔊 Speak</button>`;
-                lineDiv.querySelector('.speak-line').onclick = () => speakWord(line);
+                lineDiv.querySelector('.speak-line').onclick = () => speakText(line);
                 linesDiv.appendChild(lineDiv);
             });
             div.appendChild(linesDiv);
@@ -467,7 +506,7 @@
                 let idx = 0;
                 function playNext() {
                     if (idx >= lines.length) return;
-                    speakWord(lines[idx]);
+                    speakText(lines[idx]);
                     autoTimeout = setTimeout(() => { idx++; playNext(); }, 1800);
                 }
                 stopAllSpeech();
@@ -476,11 +515,9 @@
         });
     }
 
-    // ==================== GAMES ENGINE (Enhanced) ====================
+    // ==================== GAMES (same as before but with total points) ====================
     let totalPoints = 0;
     function updateTotalScore() { document.getElementById('totalScore').innerText = `🏆 Total Points: ${totalPoints}`; }
-
-    // Confetti effect
     function startConfetti() {
         let canvas = document.getElementById('confettiCanvas');
         let ctx = canvas.getContext('2d');
@@ -507,8 +544,6 @@
         draw();
         setTimeout(() => cancelAnimationFrame(animFrame), 1500);
     }
-
-    // Helper: add points with feedback
     function addPoints(amount, element) {
         totalPoints += amount;
         updateTotalScore();
@@ -519,12 +554,14 @@
         }
         startConfetti();
     }
-
-    // Get random word
     function getRandomWord() { return vocabulary[Math.floor(Math.random() * vocabulary.length)]; }
 
-    // --- GAME 1: Picture Match ---
-    let matchCurrent = null, matchScore = 0, matchAnswered = false;
+    // Game states
+    let matchCurrent = null, matchAnswered = false, matchScore = 0;
+    let spellCurrent = null, spellAnsweredFlag = false, spellScore = 0;
+    let listenCurrent = null, listenAnsweredFlag = false, listenScore = 0;
+    let scrambleCurrent = null, scrambleAnsweredFlag = false, scrambleScore = 0;
+
     function refreshMatchGame() {
         matchCurrent = getRandomWord();
         document.getElementById('matchEmoji').innerHTML = matchCurrent.emoji;
@@ -543,22 +580,18 @@
                     document.getElementById('matchFeedback').innerHTML = '✅ Correct! +10 points!';
                     document.getElementById('matchFeedback').style.background = '#d4f0d4';
                     addPoints(10, document.getElementById('matchScore'));
-                    matchAnswered = true;
                 } else {
                     document.getElementById('matchFeedback').innerHTML = `❌ It was "${matchCurrent.word}". +5 points for trying!`;
                     document.getElementById('matchFeedback').style.background = '#ffe0e0';
                     addPoints(5, document.getElementById('matchScore'));
-                    matchAnswered = true;
                 }
+                matchAnswered = true;
                 document.getElementById('matchScore').innerText = `🏅 Score: ${matchScore}`;
                 setTimeout(() => { refreshMatchGame(); matchAnswered = false; document.getElementById('matchFeedback').innerHTML = ''; }, 1500);
             };
             container.appendChild(btn);
         });
     }
-
-    // --- GAME 2: Spelling Bee ---
-    let spellCurrent = null, spellScore = 0, spellAnsweredFlag = false;
     function refreshSpelling() {
         spellCurrent = getRandomWord();
         document.getElementById('spellEmoji').innerHTML = spellCurrent.emoji;
@@ -583,8 +616,6 @@
         document.getElementById('spellScore').innerText = `🏅 Score: ${spellScore}`;
         setTimeout(() => refreshSpelling(), 2000);
     }
-    // --- GAME 3: Listening Quiz ---
-    let listenCurrent = null, listenScore = 0, listenAnsweredFlag = false;
     function refreshListening() {
         listenCurrent = getRandomWord();
         let options = new Set([listenCurrent.word]);
@@ -615,9 +646,6 @@
         });
     }
     function playListenWord() { if (listenCurrent) speakWord(listenCurrent.word); }
-
-    // --- GAME 4: Word Scramble ---
-    let scrambleCurrent = null, scrambleScore = 0, scrambleAnsweredFlag = false;
     function scrambleWord(word) {
         let arr = word.split('');
         for (let i = arr.length - 1; i > 0; i--) { let j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
@@ -649,8 +677,6 @@
         document.getElementById('scrambleScore').innerText = `🏅 Score: ${scrambleScore}`;
         setTimeout(() => refreshScramble(), 2000);
     }
-
-    // Render all games dynamically
     function renderGames() {
         let container = document.getElementById('gamesContainer');
         container.innerHTML = `
@@ -688,7 +714,6 @@
                 </div>
             </div>
         `;
-        // Attach events
         document.getElementById('nextMatchBtn').onclick = () => { refreshMatchGame(); matchAnswered = false; };
         document.getElementById('checkSpellBtn').onclick = checkSpelling;
         document.getElementById('nextSpellBtn').onclick = () => refreshSpelling();
@@ -696,7 +721,6 @@
         document.getElementById('nextListenBtn').onclick = () => { refreshListening(); listenAnsweredFlag = false; };
         document.getElementById('checkScrambleBtn').onclick = checkScramble;
         document.getElementById('nextScrambleBtn').onclick = () => refreshScramble();
-        // Initialize
         refreshMatchGame(); refreshSpelling(); refreshListening(); refreshScramble();
         matchScore = 0; spellScore = 0; listenScore = 0; scrambleScore = 0;
         document.getElementById('matchScore').innerText = '🏅 Score: 0';
@@ -721,9 +745,10 @@
     }
 
     renderVocabulary();
+    renderSentences();
     renderConversations();
     initTabs();
-    renderGames(); // initial games load
+    renderGames();
     window.addEventListener('beforeunload', () => stopAllSpeech());
 </script>
 </body>
